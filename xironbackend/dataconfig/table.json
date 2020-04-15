@@ -1,0 +1,5 @@
+{"table_type":{"bar": "4e39fec8-d9fe-4efe-838e-d02e93b71f2e", "name": "卡座qqq"},
+  "table_area":{"bar": "4e39fec8-d9fe-4efe-838e-d02e93b71f2e","name": "小精灵d"},
+  "table_init":{"display_info": [{"name": "最大容纳人数", "value": "max_consumer_count"},{"name": "节目费", "value": "show_money"}], "open_table_money_enable": true, "show_money_enable": true, "latest_reserve_time": "20:01:00", "latest_open_time": "20:31:00", "display_color": {"empty": "color-empty", "reserved": "color-reserved", "entry": "color-entry", "repair": "color-repair", "lock": "color-lock"}},
+  "create_table1":{"show_money_type": "PER_TABLE", "name": "111", "table_type": "3f1597cc-9e36-487e-8031-d5b84cddd7e5", "area": "a1a21c05-a374-4256-a1a6-fc7cae6e9ba9", "max_consumer_count": "1", "min_comsume_money": "123.45", "reserve_table_money": "0", "open_table_money": "1.11", "show_money": "55"}
+}
