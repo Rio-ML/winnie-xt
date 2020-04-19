@@ -8,8 +8,8 @@ class OperationJson:
     # 读取 login data json 文件
     @staticmethod
     def read_data():
-        # location = '/Users/ranmenglong/workspace/winnie/xironbar/xironbackend/dataconfig/loginjson.json'
-        location = '/Users/ranmenglong/workspace/winnie/xironbar/xironbackend/dataconfig/table.json'
+        # location = '/Users/ranmenglong/workspace/github/xironbar/xironbackend/dataconfig/loginjson.json'
+        location = '/Users/ranmenglong/workspace/github/xironbar/xironbackend/dataconfig/table.json'
         with open(location) as fp:
             data = json.load(fp)
             return data

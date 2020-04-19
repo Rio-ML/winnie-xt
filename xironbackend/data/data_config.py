@@ -1,123 +1,73 @@
 import requests
 
 
-class global_var:
+class ExcelField:
     Id = '0'
     first_menu = '1'
     second_menu = '2'
     tab = '3'
+    test_point = '4'
     pre = '5'
     url = '6'
-    request_way = '7'
+    request_method = '7'
     header = '8'
     case_depend = '9'
-    data_depend = '10'
-    field_depend = '11'
-    data = '12'
-    expect = '13'
-    result = '14'
-    run = '15'
+    data = '10'
+    expect = '11'
+    result = '12'
+    run = '13'
 
 
 def get_id():
-    return global_var.Id
+    return ExcelField.Id
 
 
 def get_first_menu():
-    return global_var.first_menu
+    return ExcelField.first_menu
 
 
 def get_second_menu():
-    return global_var.second_menu
+    return ExcelField.second_menu
 
 
 def get_tab():
-    return global_var.tab
+    return ExcelField.tab
 
 
 def get_pre():
-    return global_var.pre
+    return ExcelField.pre
 
 
 def get_url():
-    return global_var.url
+    return ExcelField.url
 
 
-def get_request_way():
-    return global_var.request_way
+def get_request_method():
+    return ExcelField.request_method
 
 
 def get_header():
-    return global_var.header
+    return ExcelField.header
 
 
 def get_case_depend():
-    return global_var.case_depend
-
-
-def get_data_depend():
-    return global_var.data_depend
-
-
-def get_field_depend():
-    return global_var.field_depend
+    return ExcelField.case_depend
 
 
 def get_data():
-    return global_var.data
+    return ExcelField.data
 
 
 def get_expect():
-    return global_var.expect
+    return ExcelField.expect
 
 
 def get_result():
-    return global_var.result
+    return ExcelField.result
 
 
 def get_run():
-    return global_var.run
-
-
-# 小铁登录的 header
-# def get_login_header_value():
-#     header = {
-#             'Content-Type': 'application/json',
-#             'Xi-App-Id': '0a8020002101b2ddc7626fca179adf70'
-#         }
-#     return header
-
-
-# 小铁获取 session——token 的值
-# def get_pc_session_token(user):
-#     login_url = 'http://debug2.wegui.cn/v1/login'
-#
-#     data_order = {
-#         "username": user,
-#         "password": "123456"
-#     }
-#
-#     login_headers = {
-#         'Content-Type': 'application/json',
-#         'Xi-App-Id': '0a8020002101b2ddc7626fca179adf70'
-#     }
-#
-#     login = requests.post(login_url, json=data_order, headers=login_headers)
-#
-#     pc_SessionToken = login.json()['sessionToken']
-# #     print('pc端的session值', pc_SessionToken)
-#     return pc_SessionToken
-
-
-# 小铁返回带 session-token 的 header
-# def pc_headers(user):
-#     pc_header = {
-#         'Content-Type': 'application/json',
-#         'Xi-App-Id': '0a8020002101b2ddc7626fca179adf70',
-#         'Xi-Session-Token': get_pc_session_token(user)
-#     }
-#
-#     return pc_header
+    return ExcelField.run
 
 
 # 酒吧登录的header
@@ -147,10 +97,6 @@ def get_pc_key(user):
     pc_key = login.json()['key']
     csrf = login.cookies.get('csrftoken')
 
-    # res = list()
-    # res.append(pc_key)
-    # res.append(csrf)
-
     res_dict = dict()
     res_dict['pc_key'] = pc_key
     res_dict['csrf'] = csrf
@@ -160,11 +106,6 @@ def get_pc_key(user):
 
 # 酒吧返回带key的header
 def pc_headers(user):
-    # pc_header = {
-    #     'Content-Type': 'application/json',
-    #     'Authorization': 'Token ' + get_pc_key(user)[0],
-    #     'X-CSRFToken': get_pc_key(user)[1]
-    # }
 
     pc_header = {
         'Content-Type': 'application/json',

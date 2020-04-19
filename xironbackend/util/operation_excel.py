@@ -3,13 +3,22 @@ from xlutils.copy import copy
 
 
 class OperationExcel:
-    def __init__(self, file_name=None, sheet_id=None):
+    def __init__(self, file_name=None, sheet_id=None, start_row=None):
         if file_name:
             self.file_name = file_name
+        else:
+            self.file_name = '/Users/ranmenglong/workspace/github/xironbar/xironbackend/dataconfig/interfacebar1.xlsx'
+
+        if sheet_id:
             self.sheet_id = sheet_id
         else:
-            self.file_name = '/Users/ranmenglong/workspace/winnie/xironbar/xironbackend/dataconfig/interfacebar1.xlsx'
             self.sheet_id = 0
+
+        if start_row:
+            self.start_row = start_row
+        else:
+            self.start_row = 1
+
         self.data = self.get_data()
 
     # 获取sheets的内容
@@ -43,7 +52,7 @@ class OperationExcel:
 
     # 根据对应的caseID 找到对应的行号
     def get_row_num(self, case_id):
-        num = 0
+        num = self.start_row
         cols_data = self.get_cols_data()
         for col_data in cols_data:
             if case_id in col_data:

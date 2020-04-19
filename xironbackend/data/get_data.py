@@ -13,7 +13,6 @@ class GetData:
 
     # 获取是否执行
     def get_is_run(self, row):
-        flag = None
         col = int(data_config.get_run())
         run_model = self.operation_excel.get_cell_value(row, col)
         if run_model == 'yes':
@@ -38,10 +37,9 @@ class GetData:
         pc_headers = data_config.pc_headers(header)
         return pc_headers
 
-
     # 获取请求方式
     def get_request_method(self, row):
-        col = int(data_config.get_request_way())
+        col = int(data_config.get_request_method())
         request_method = self.operation_excel.get_cell_value(row, col)
         return request_method
 
@@ -95,29 +93,12 @@ class GetData:
         # 请求 res.json()方法会把 null 转换成 None 破坏 json格式，这里回写 excel时将 None用引号包裹
         self.operation_excel.write_value(row, col, value.replace("None", "null"))
 
-    # 获取依赖数据的key
-    def get_depend_key(self, row):
-        col = int(data_config.get_data_depend())
-        depend_key = self.operation_excel.get_cell_value(row, col)
-        if depend_key == "":
-            return None
-        else:
-            return depend_key
-
     # 判断是否有case依赖
-    def is_depend(self, row):
+    def get_case_depend(self, row):
         col = int(data_config.get_case_depend())
-        depend_case_id = self.operation_excel.get_cell_value(row, col)
-        if depend_case_id == "":
+        case_depend = self.operation_excel.get_cell_value(row, col)
+        if case_depend == "":
             return None
         else:
-            return depend_case_id
+            return case_depend
 
-    # 获取依赖数据所属字段
-    def get_depend_field(self, row):
-        col = int(data_config.get_field_depend())
-        data = self.operation_excel.get_cell_value(row, col)
-        if data == "":
-            return None
-        else:
-            return data
