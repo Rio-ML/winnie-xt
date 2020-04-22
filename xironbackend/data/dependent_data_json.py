@@ -20,7 +20,12 @@ class DependentDataJson:
             case_depend_obj = CommonUtil.dict_to_object(case_depend)
             case_dp_value = self.get_pre_data_for_case_and_key(case_depend_obj.dp_case_id, case_depend_obj.dp_key)
             if case_depend_obj.fit_field is not None:
-                self.excel_prop.request_data[case_depend_obj.fit_field] = case_dp_value
+                if 'data_type' in case_depend_obj.keys() and case_depend_obj.data_type == 'list':
+                    fit_field_value_list = list()
+                    fit_field_value_list.append(case_dp_value)
+                    self.excel_prop.request_data[case_depend_obj.fit_field] = fit_field_value_list
+                else:
+                    self.excel_prop.request_data[case_depend_obj.fit_field] = case_dp_value
             else:
                 # 填充数据为空的时候，需要直接填充到 url 上
                 self.excel_prop.url = self.excel_prop.url.replace('{' + case_depend_obj.dp_key + '}', case_dp_value)

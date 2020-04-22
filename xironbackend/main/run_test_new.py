@@ -40,6 +40,8 @@ class RunTest(unittest.TestCase):
                 if self.excel_prop.case_depend is not None and CommonUtil.is_json(self.excel_prop.case_depend):
                     self.depend_data_json = DependentDataJson(self.excel_prop)
                     self.excel_prop = self.depend_data_json.assemble_excel_prop()
+                self.data.write_result(i, self.excel_prop.__str__())
+                break
                 if self.excel_prop.method != 'get':
                     self.excel_prop.request_data = json.dumps(self.excel_prop.request_data)
                 self.statistic.total_count += 1
@@ -89,7 +91,6 @@ class RunTest(unittest.TestCase):
         print("本次接口自动化测试失败用例数：", self.statistic.fail_count)
 
         # self.send_mai.send_main(success_count, self.statistic.fail_count)
-
 
 
 if __name__ == '__main__':
