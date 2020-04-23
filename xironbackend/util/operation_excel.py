@@ -1,25 +1,43 @@
 import xlrd
 from xlutils.copy import copy
+from xironbackend.util.read_ini import ReadIni
 
 
 class OperationExcel:
-    def __init__(self, file_name=None, sheet_id=None, start_row=None):
+    def __init__(self, file_name=None, sheet_id=None, sheet_name=None, start_row=None):
+        read_ini = ReadIni()
         if file_name:
             self.file_name = file_name
         else:
-            self.file_name = '/Users/ranmenglong/workspace/github/xironbar/xironbackend/dataconfig/interfacebar1.xlsx'
+            self.file_name = read_ini.get_value_by_node_and_key('ExcelPath', 'file_path')
 
         if sheet_id:
             self.sheet_id = sheet_id
         else:
-            self.sheet_id = 0
+            self.sheet_id = int(read_ini.get_value_by_node_and_key('ExcelPath', 'default_sheet_id'))
 
         if start_row:
             self.start_row = start_row
         else:
-            self.start_row = 1
+            self.start_row = int(read_ini.get_value_by_node_and_key('ExcelPath', 'default_start_row'))
 
-        self.data = self.get_data()
+        self.valid_sheet_names = read_ini.get_value_by_node_and_key('ExcelPath', 'valid_sheet_name')
+        self.valid_data = self.get_valid_sheets_data()
+        if sheet_name:
+            self.data = self.valid_data[sheet_name]
+        else:
+            self.data = self.get_data()
+
+    def get_valid_sheets_data(self):
+        if self.valid_sheet_names is None:
+            return None
+        else:
+            valid_sheet_names = self.valid_sheet_names.split(',')
+        data = xlrd.open_workbook(self.file_name)
+        valid_sheets_data = dict()
+        for sheet_name in valid_sheet_names:
+            valid_sheets_data[sheet_name] = data.sheet_by_name(sheet_name)
+        return valid_sheets_data
 
     # 获取sheets的内容
     def get_data(self):
