@@ -7,20 +7,56 @@ class RegisterHandle(object):
     def __init__(self, driver):
         self.register_p = RegisterPage(driver)
 
-    # 输入用户名
-    def send_user_name(self, user_name):
-        self.register_p.get_user_name_element().send_keys(user_name)
+    # 输入员工姓名
+    def send_user_name(self, staff_name):
+        self.register_p.get_user_staff_name().send_keys(staff_name)
 
-    # 输入密码
-    def send_user_pwd(self, user_pwd):
-        self.register_p.get_user_pwd_element().send_keys(user_pwd)
+    # 输入员工电话
+    def send_staff_phone(self, staff_phone):
+        self.register_p.get_staff_phone().send_keys(staff_phone)
+
+    # 输入员工民族
+    def send_staff_national(self, user_national):
+        self.register_p.get_staff_phone().send_keys(user_national)
+
+    # 输入员工身份证号
+    def send_staff_id(self, user_id):
+        self.register_p.get_staff_phone().send_keys(user_id)
+
+    # 输入身份证详细地址
+    def send_staff_id_place_input(self, user_id_place_input):
+        self.register_p.get_staff_phone().send_keys(user_id_place_input)
+
+    # 输入现居住地详细地址
+    def send_staff_live_input(self, user_live_input):
+        self.register_p.get_staff_phone().send_keys(user_live_input)
+
+    # 输入紧急联系人姓名
+    def send_staff_contact_name(self, user_contact_name):
+        self.register_p.get_staff_phone().send_keys(user_contact_name)
+
+    # 输入紧急联系人电话
+    def send_contact_phone(self, user_contact_phone):
+        self.register_p.get_staff_phone().send_keys(user_contact_phone)
+
+    # 输入毕业院校
+    def send_staff_school(self, user_school):
+        self.register_p.get_staff_phone().send_keys(user_school)
+
+    # 输入身高
+    def send_staff_height(self, user_height):
+        self.register_p.get_staff_phone().send_keys(user_height)
+
+    # 输入体重
+    def send_staff_weight(self, user_weight):
+        self.register_p.get_staff_phone().send_keys(user_weight)
 
     # 获取文字信息
     def get_user_text(self, info, user_info):
         try:
-            if info == 'user_name_error':
+            if info == 'staff_name_empty':
                 # text = self.register_p.get_user_name_error_element().get_attribute('value')
-                ele = self.register_p.get_user_name_error_element()
+                ele = self.register_p.get_user_staff_name_empty()
                 time.sleep(3)
                 text = ele.text
             elif info == 'user_pwd_error':
@@ -39,14 +75,5 @@ class RegisterHandle(object):
 
     # 点击注册按钮
     def click_register_button(self):
-        self.register_p.get_button_element().click()
+        self.register_p.get_register_button_element().click()
 
-    # 获取注册按钮文字
-    def get_register_text(self):
-        return self.register_p.get_button_element().text
-
-    def click_user_name(self):
-        self.register_p.get_user_name_element().click()
-
-    def click_user_pwd(self):
-        self.register_p.get_user_pwd_element().click()

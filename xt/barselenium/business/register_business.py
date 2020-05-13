@@ -7,21 +7,32 @@ class RegisterBusiness(object):
     def __init__(self, driver):
         self.register_h = RegisterHandle(driver)
 
-    def user_base(self, user_name, user_pwd):
+    def user_base(self, user_name, staff_phone, national, staff_id, id_place_input, live_input, contact_name, contact_phone, height, weight):
         # self.register_h.register_p.implicitly_wait(3)
-        self.register_h.click_user_name()
-        time.sleep(2)
         self.register_h.send_user_name(user_name)
         time.sleep(2)
-        self.register_h.click_user_pwd()
+        self.register_h.send_staff_phone(staff_phone)
         time.sleep(2)
-        self.register_h.send_user_pwd(user_pwd)
+        self.register_h.send_staff_national(national)
+        time.sleep(2)
+        self.register_h.send_staff_id(staff_id)
+        time.sleep(2)
+        self.register_h.send_staff_id_place_input(id_place_input)
+        time.sleep(2)
+        self.register_h.send_staff_live_input(live_input)
+        time.sleep(2)
+        self.register_h.send_staff_contact_name(contact_name)
+        time.sleep(2)
+        self.register_h.send_contact_phone(contact_phone)
+        time.sleep(2)
+        self.register_h.send_staff_height(height)
+        time.sleep(2)
+        self.register_h.send_staff_weight(weight)
         time.sleep(2)
         self.register_h.click_register_button()
-        time.sleep(2)
 
     def register_success(self):
-        if self.register_h.get_register_text() == None:
+        if self.register_h.get_user_text() == None:
             return True
         else:
             return False
