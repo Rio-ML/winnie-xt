@@ -12,7 +12,7 @@ report_title = u'Example用例执行报告'
 desc = u'订台'
 # suite = unittest.main()
 suite = unittest.TestSuite()
-suite.addTest(personnel_management.PersonManage("test_001"))
+suite.addTest(table.TestReserveTable("test_001"))
 # suite.addTest(unittest_case.TestReserveTable("test_002"))
 
 with open(report_file, 'wb') as f:

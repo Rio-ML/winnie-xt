@@ -8,6 +8,7 @@ import time
 from case import common_operation
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.by import By
+from base.find_element import FindElement
 from business.register_business import RegisterBusiness
 from handle.register_handle import RegisterHandle
 
@@ -34,7 +35,7 @@ class PersonManage(unittest.TestCase):
         time.sleep(5)
         self.driver.close()
 
-    @unittest.skip('不执行')
+    # @unittest.skip('不执行')
     # 添加员工，不填的时候错误文案提示比对
     def test_001(self):
         self.driver.implicitly_wait(30)
@@ -91,8 +92,10 @@ class PersonManage(unittest.TestCase):
         self.driver.implicitly_wait(30)
         common_operation.IntoModule.into_personnel(self, 'staff')
         self.driver.find_element_by_xpath("//button[@type='button']/span[contains(text(),'添加员工')]").click()
-        # RegisterBusiness.user_base(self, '长江四号', '18811122233', '白族', '235407195106112745', '湖北省', '湖南省', 'qiqi', '13511114444', '180', '100')
-        RegisterHandle.send_user_name(self, 'ddd')
+        self.driver.find_element_by_xpath("//input[@placeholder='请输入员工姓名']").send_keys("长江四号")
+        self.driver.find_element_by_xpath("//input[@placeholder='请输入手机号']").send_keys("18622223333")
+        self.driver.find_element_by_xpath("//input[@placeholder='请选择性别']").click()
+
 
 if __name__ == '__main__':
     unittest.main()

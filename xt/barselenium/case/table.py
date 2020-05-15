@@ -27,7 +27,7 @@ class TestReserveTable(unittest.TestCase):
         time.sleep(5)
         self.driver.close()
 
-    @unittest.skip('不执行')
+    # @unittest.skip('不执行')
     # 顾客订台-仲夏夜之梦-有押金-现金-取消预订
     def test_001(self):
         self.driver.implicitly_wait(30)
@@ -36,29 +36,40 @@ class TestReserveTable(unittest.TestCase):
         time.sleep(2)
         try:
             self.driver.find_element_by_xpath("//div[@class='xi-table-name' and contains(text(),'仲夏夜之梦')]").click()
+            time.sleep(2)
             self.driver.find_element_by_xpath("//button[@type='button']/span[contains(text(),'订台')]").click()
             # 验证取消按钮是否有效
+            time.sleep(2)
             self.driver.find_element_by_xpath("//div[@class='drawer']/div[5]/div/div/button/span[contains(text(),'取消')]").click()
+            time.sleep(2)
             self.driver.find_element_by_xpath("//button[@type='button']/span[contains(text(),'订台')]").click()
             # 顾客订台
             time.sleep(2)
             self.driver.find_element_by_xpath("//div/span/div/label[2]/span/span[@class='el-radio__inner']").click()
+            time.sleep(2)
             self.driver.find_element_by_xpath("//input[@placeholder='请输入顾客称呼']").send_keys('gl郭京飞')
             self.driver.find_element_by_xpath("//input[@placeholder='请输入手机号码']").send_keys('18707175056')
             self.driver.find_element_by_xpath("//div[@class='btn-box']/div/div[2]/button/span[contains(text(),'订台')]").click()
+            time.sleep(2)
             self.driver.find_element_by_xpath("//div[@class='pay-way-top-text' and contains(text(),'现金支付')]").click()
+            time.sleep(2)
             self.driver.find_element_by_xpath("//div[@class='dialog-footer']/button[2]/span[text()='确 认']").click()
+            time.sleep(2)
             self.driver.find_element_by_xpath("//div[@style!='display: none;']/div/div[3]/div/button[2]/span[contains(text(),'收款成功')]").click()
             # 判断是否订台成功
+            time.sleep(2)
             customer_order = self.driver.find_element_by_xpath("//div[@class='drawer']/div/div/div[10]/span[@class='value']").text
             if customer_order == '自来客':
                 print('pass')
                 time.sleep(3)
                 # 取消订台
                 self.driver.find_element_by_xpath("//button[@type='button']/span[contains(text(),'取消预定')]").click()
+                time.sleep(2)
                 self.driver.find_element_by_xpath("//textarea[@placeholder='请输入取消原因']").send_keys('邓邓取消')
+                time.sleep(2)
                 self.driver.find_element_by_xpath("//div[@class='el-col el-col-12']/button[@type='button']/span[contains(text(),'确定')]").click()
                 try:
+                    time.sleep(2)
                     self.driver.find_element_by_xpath("//div[@class='dialog-content' and contains(text(),'取消原因：邓邓取消')]")
                     self.driver.find_element_by_xpath("//div[@class='el-dialog__body']/div[contains(text(),'房台名称：仲夏夜之梦')]")
                     self.driver.find_element_by_xpath("//div[@class='dialog-content' and contains(text(),'扣除押金：10.00')]")
