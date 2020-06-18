@@ -1,16 +1,9 @@
 # -*- coding: utf-8 -*-
-from selenium.webdriver import ActionChains
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.select import Select
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
 import unittest
 import time
-from page.element_page import RegisterPage as rp
-from business.register_business import RegisterBusiness as rb
-from handle.get_utils import Action_util
+from business.register_business import RegisterBusiness
+
 '''
 微信管理端审批
 '''
@@ -19,12 +12,20 @@ from handle.get_utils import Action_util
 class TestReserveTable(unittest.TestCase):
 
     def setUp(self):
-        mobileEmulation = {'deviceName': 'iPhone X'}
+        mobile_emulation = {'deviceName': 'iPhone X'}
         options = webdriver.ChromeOptions()
-        options.add_experimental_option('mobileEmulation', mobileEmulation)
+        options.add_experimental_option('mobileEmulation', mobile_emulation)
+        # Windows 配置 开始
         self.driver = webdriver.Chrome(executable_path='chromedriver.exe', chrome_options=options)
+        # Windows 配置 结束
+        # mac 配置 开始
+        # options.binary_location = "/Applications/IT/Google Chrome.app/Contents/MacOS/Google Chrome"
+        # chrome_driver_binary = "/usr/local/bin/chromedriver"
+        # self.driver = webdriver.Chrome(chrome_driver_binary, chrome_options=options)
+        # mac 配置 结束
         self.driver.get("http://wxadmin.wegui.cn/admin/#/")
         # self.driver.maximize_window()
+        self.rb = RegisterBusiness(self.driver)
 
     def tearDown(self):
         time.sleep(5)
@@ -34,7 +35,7 @@ class TestReserveTable(unittest.TestCase):
     # 提交一个审批
     def test_001(self):
         self.driver.implicitly_wait(30)
-        rb.contract_base()
+        self.rb.contract_base()
         # rp.login(self.driver, 'xiaod90', '123456')
         # rp.open_xt_menu(self.driver, '合同审批(新)')
         # rp.all_button(self.driver, "添加申请")
@@ -74,4 +75,3 @@ class TestReserveTable(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-

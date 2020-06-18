@@ -1,27 +1,19 @@
 # -*- coding:utf-8 -*-
-from handle.get_utils import *
-import selenium
-from selenium.webdriver import ActionChains
-from business.register_business import RegisterBusiness
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.select import Select
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium import webdriver
-import unittest
-import time
+
+from handle.get_utils import *
 
 
 class RegisterPage(object):
+
     # 登陆
-    def login(driver, username, password):
+    def login(self, driver, username, password):
         Action_util.Input(driver, "//input[@placeholder='用户名']", username)
         Action_util.Input(driver, "//input[@placeholder='密码']", password)
         Action_util.Click(driver, "//button[@class='mint-button primary-btn mint-button--default mint-button--large']")
 
     # 各种按钮
-    def all_button(driver, a_button):
+    def all_button(self, driver, a_button):
         class_map = {
             "添加申请": "//span[text()='添加申请']/parent::*/parent::*",
             "提交申请": "//button[text()='提交申请']/parent::*",
@@ -39,7 +31,7 @@ class RegisterPage(object):
         Action_util.Click(driver, class_map[a_button])
 
     # 各种输入框
-    def input_text(driver, location_box, value):
+    def input_text(self, driver, location_box, value):
         class_map = {
             "网点名称": "//input[@placeholder='请输入网点名称']",
             "联系人": "//input[@placeholder='请输入联系人']",
@@ -62,7 +54,7 @@ class RegisterPage(object):
         Action_util.Input(driver, class_map[location_box], value)
 
     # 各种下拉框选择
-    def drop_down_box(driver, loc_select, value):
+    def drop_down_box(self, driver, loc_select, value):
         class_map = {
             "场景分类": "//div[text()='场景分类：']/parent::*/div/select",
             "网点类型": "//div[text()='网点类型：']/parent::*/div/select",
@@ -75,7 +67,7 @@ class RegisterPage(object):
         Select(driver.find_element_by_xpath(class_map[loc_select])).select_by_value(value)
 
     # 各种勾选框
-    def check_box(driver, check_or_not):
+    def check_box(self, driver, check_or_not):
         class_map = {
             "需扣除运费": "//input[@id='needFreight']",
             "需扣除贴纸费用": "//input[@id='needSticker']",
@@ -91,7 +83,7 @@ class RegisterPage(object):
         Action_util.Click(driver, class_map[check_or_not])
 
     # 各种弹框确认
-    def alert_check(driver, xpath, alert_title, yes_or_no):
+    def alert_check(self, driver, xpath, alert_title, yes_or_no):
         class_map = {
             "是否继续填写上次保存的申请？": "//div[text()='是否继续填写上次保存的申请？']"
         }
@@ -105,12 +97,12 @@ class RegisterPage(object):
             Action_util.Click(driver, class_map1[yes_or_no])
 
     # 添加图片
-    def add_photo(driver, xpath, photo):
+    def add_photo(self, driver, xpath, photo):
         class_map = {
             "门头照": "//input[@type='file']"
         }
         WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, class_map[xpath]))).send_keys(photo)
 
     # 小铁工具的menu
-    def open_xt_menu(driver, menu):
+    def open_xt_menu(self, driver, menu=None):
         Action_util.Click(driver, "//div[text()='" + menu + "']/parent::*/parent::*")
