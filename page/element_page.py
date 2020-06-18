@@ -1,10 +1,30 @@
 # -*- coding:utf-8 -*-
 from selenium.webdriver.support.select import Select
-
-from handle.get_utils import *
+from handle.get_utils import Action_util
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium import webdriver
 
 
 class RegisterPage(object):
+    def __init__(self, driver):
+        self.register_h = Action_util(driver)
+        self.driver = driver
+
+    def open_url(self, url):
+        mobile_emulation = {'deviceName': 'iPhone X'}
+        options = webdriver.ChromeOptions()
+        options.add_experimental_option('mobileEmulation', mobile_emulation)
+        # Windows 配置 开始
+        self.driver = webdriver.Chrome(executable_path='chromedriver.exe', chrome_options=options)
+        # Windows 配置 结束
+        # mac 配置 开始
+        # options.binary_location = "/Applications/IT/Google Chrome.app/Contents/MacOS/Google Chrome"
+        # chrome_driver_binary = "/usr/local/bin/chromedriver"
+        # self.driver = webdriver.Chrome(chrome_driver_binary, chrome_options=options)
+        # mac 配置 结束
+        self.driver.get(url)
 
     # 登陆
     def login(self, driver, username, password):

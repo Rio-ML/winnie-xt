@@ -1,19 +1,18 @@
 # -*- coding: utf-8 -*-f
 import time
-
 from handle.get_utils import Action_util
 from page.element_page import RegisterPage
 
 
 class RegisterBusiness(object):
     def __init__(self, driver):
-        self.register_h = Action_util()
+        self.register_h = Action_util(driver)
         self.driver = driver
-        self.rp = RegisterPage()
+        self.rp = RegisterPage(driver)
 
     def contract_base(self):
         self.driver.implicitly_wait(30)
-        self.rp.login(self.driver, 'xiaod90', '123456')
+        time.sleep(1)
         self.rp.open_xt_menu(self.driver, '合同审批(新)')
         self.rp.all_button(self.driver, "添加申请")
         self.rp.input_text(self.driver, "网点名称", "2020061701")
@@ -33,19 +32,19 @@ class RegisterBusiness(object):
         self.rp.input_text(self.driver, "收费规则", "12")
         self.rp.input_text(self.driver, "平台分成", "100")
         self.rp.input_text(self.driver, "其它费用", "12")
-        time.sleep(3)
+        time.sleep(1)
         # 滚动
         js = "window.scrollTo(100,1500)"
         self.driver.execute_script(js)
-        time.sleep(3)
-        rp.check_box(self.driver, "其它环境-海边")
-        rp.all_button(self.driver, "添加柜组")
-        rp.all_button(self.driver, "添加柜组-主柜加")
-        rp.all_button(self.driver, "修改柜组-确定")
-        rp.add_photo(self.driver, "门头照", "E:/xt/xtselenium/util/v.png")
-        rp.all_button(self.driver, "提交申请")
-        rp.drop_down_box(self.driver, "请选择审批人", "rwvgkYZmKm")
-        rp.all_button(self.driver, "请选择审批人-确定")
-        rp.all_button(self.driver, "提交成功-确定")
+        time.sleep(1)
+        self.rp.check_box(self.driver, "其它环境-海边")
+        self.rp.all_button(self.driver, "添加柜组")
+        self.rp.all_button(self.driver, "添加柜组-主柜加")
+        self.rp.all_button(self.driver, "修改柜组-确定")
+        self.rp.add_photo(self.driver, "门头照", "E:/xt/xtselenium/util/v.png")
+        self.rp.all_button(self.driver, "提交申请")
+        self.rp.drop_down_box(self.driver, "请选择审批人", "rwvgkYZmKm")
+        self.rp.all_button(self.driver, "请选择审批人-确定")
+        # self.rp.all_button(self.driver, "提交成功-确定")
 
 

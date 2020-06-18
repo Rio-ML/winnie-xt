@@ -4,6 +4,8 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class Action_util(object):
+    def __init__(self, driver):
+        self.driver = driver
 
     def Input(driver, xpath, value):
         WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH, xpath))).send_keys(value)
