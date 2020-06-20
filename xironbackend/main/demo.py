@@ -5,26 +5,26 @@
 # print('aa' in a)
 
 
-# from xironbackend.data.Dict import Dict
-# import json
-#
-#
-# def dict_to_object(dict_obj):
-#     if type(dict_obj) is list:
-#         for item in dict_obj:
-#             if not isinstance(item, dict):
-#                 # return item
-#                 dict_obj.append(item)
-#                 continue
-#             inst = Dict()
-#             for k, v in item.items():
-#                 inst[k] = dict_to_object(v)
-#                 dict_obj.append(inst)
-#         return dict_obj
-#
-#
-# a = json.loads('[{"dp_case_id":"agent-test-001","dp_key":"id","fit_field":null}]')
-# dict_to_object(a)
+from xironbackend.data.Dict import Dict
+import json
+
+
+def dict_to_object(dict_obj):
+    if type(dict_obj) is list:
+        for item in dict_obj:
+            if not isinstance(item, dict):
+                # return item
+                dict_obj.append(item)
+                continue
+            inst = Dict()
+            for k, v in item.items():
+                inst[k] = dict_to_object(v)
+                dict_obj.append(inst)
+        return dict_obj
+
+
+a = json.loads('[{"dp_case_id":"agent-test-001","dp_key":"id","fit_field":null}]')
+dict_to_object(a)
 
 # class Demo:
 #     def __init__(self):
@@ -68,12 +68,3 @@
 # if __name__ == '__main__':
 #     read_init = ReadIni(node='ExcelPath')
 #     print(read_init.get_value('sheet_id'))
-#
-from xironbackend.util.operation_excel import OperationExcel
-
-opera_excel = OperationExcel()
-data = opera_excel.get_valid_sheets_data()
-print(data)
-
-# for index in [1, 4, 3, 8]:
-#     print(index)

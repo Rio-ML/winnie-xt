@@ -50,3 +50,4 @@ class RunMethod:
         else:
             res = self.put_main(url, data, header)
         return res
+

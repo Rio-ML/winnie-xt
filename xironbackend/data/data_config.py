@@ -70,47 +70,81 @@ def get_run():
     return ExcelField.run
 
 
-# 酒吧登录的header
+# # 酒吧登录的header
+# def get_login_header_value():
+#     header = {
+#             'Content-Type': 'application/json'
+#         }
+#     return header
+
+
+# # 酒吧获取key的值
+# def get_pc_key(user):
+#     # login_url = 'http://berry-server.wegui.cn/auth/login/'
+#     login_url = 'https://api.dawanplus.com/auth/login/'
+#
+#     data_order = {
+#         "username": user,
+#         "email": "",
+#         "password": "dxs123456"
+#     }
+#
+#     login_headers = {
+#         'Content-Type': 'application/json'
+#     }
+#
+#     login = requests.post(login_url, json=data_order, headers=login_headers)
+#
+#     pc_key = login.json()['key']
+#     csrf = login.cookies.get('csrftoken')
+#
+#     res_dict = dict()
+#     res_dict['pc_key'] = pc_key
+#     res_dict['csrf'] = csrf
+#
+#     return res_dict
+#
+#
+# # 酒吧返回带key的header
+# def pc_headers(user):
+#
+#     pc_header = {
+#         'Content-Type': 'application/json',
+#         'Authorization': 'Token ' + get_pc_key(user).get('pc_key'),
+#         'X-CSRFToken': get_pc_key(user).get('csrf')
+#     }
+#
+#     return pc_header
+
+
+# 小铁header
 def get_login_header_value():
     header = {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Xi-App-Id': '0a8020002101b2ddc7626fca179adf70'
         }
     return header
 
 
-# 酒吧获取key的值
 def get_pc_key(user):
-    login_url = 'http://berry-server.wegui.cn/auth/login/'
-
+    login_url = 'http://debug2.wegui.cn/v1/login'
     data_order = {
         "username": user,
-        "email": "",
-        "password": "moternmotern"
+        "password": "123456"
     }
-
     login_headers = {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Xi-App-Id': '0a8020002101b2ddc7626fca179adf70'
     }
-
     login = requests.post(login_url, json=data_order, headers=login_headers)
-
-    pc_key = login.json()['key']
-    csrf = login.cookies.get('csrftoken')
-
-    res_dict = dict()
-    res_dict['pc_key'] = pc_key
-    res_dict['csrf'] = csrf
-
-    return res_dict
+    pc_sessionToken = login.json()['sessionToken']
+    return pc_sessionToken
 
 
-# 酒吧返回带key的header
 def pc_headers(user):
-
     pc_header = {
         'Content-Type': 'application/json',
-        'Authorization': 'Token ' + get_pc_key(user).get('pc_key'),
-        'X-CSRFToken': get_pc_key(user).get('csrf')
+        'Xi-App-Id': '0a8020002101b2ddc7626fca179adf70',
+        'Xi-Session-Token': get_pc_key(user)
     }
-
     return pc_header

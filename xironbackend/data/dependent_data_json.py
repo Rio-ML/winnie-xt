@@ -1,13 +1,17 @@
 from xironbackend.util.operation_excel import OperationExcel
+from xironbackend.data.get_data import GetData
 import json
+from xironbackend.util.read_ini import ReadIni
 from xironbackend.util.common_util import CommonUtil
 
 
 class DependentDataJson:
-    def __init__(self, excel_prop, data):
+    def __init__(self, excel_prop):
         self.excel_prop = excel_prop
         self.opera_excel = OperationExcel()
-        self.data = data
+        xiao_iron = 'E:/xt/xironbardepend/xironbackend/'
+        self.data = GetData(xiao_iron + 'dataconfig/interfacebar1.xlsx', 6)
+        self.read_ini = ReadIni()
 
     # 组装执行请求需要的数据，组装 excel_prop
     def assemble_excel_prop(self):

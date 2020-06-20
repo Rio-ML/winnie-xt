@@ -12,7 +12,7 @@ import unittest
 class RunTest(unittest.TestCase):
     def __init__(self):
         unittest.TestCase.__init__(self)
-        xiao_iron = '/Users/ranmenglong/workspace/winnie/xironbar/xironbackend/'
+        xiao_iron = 'E:/xt/xironbardepend/xironbackend/'
         self.run_method = RunMethod()
         self.data = GetData(xiao_iron + 'dataconfig/interfacebar1.xlsx', 2)
         self.send_mai = SendEmail()

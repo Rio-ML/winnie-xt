@@ -9,7 +9,7 @@ class DependentData:
     def __init__(self, case_id):
         self.case_id = case_id
         self.opera_excel = OperationExcel()
-        xiao_iron = '/Users/ranmenglong/workspace/github/xironbar/xironbackend/'
+        xiao_iron = 'E:/xt/xironbardepend/xironbackend/'
         self.data = GetData(xiao_iron + 'dataconfig/interfacebar1.xlsx', 2)
         self.read_ini = ReadIni()
 

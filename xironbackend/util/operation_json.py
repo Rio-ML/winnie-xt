@@ -9,8 +9,9 @@ class OperationJson:
     @staticmethod
     def read_data():
         # location = '/Users/ranmenglong/workspace/github/xironbar/xironbackend/dataconfig/loginjson.json'
-        location = '/Users/ranmenglong/workspace/github/xironbar/xironbackend/dataconfig/table.json'
-        with open(location) as fp:
+        # location = 'E:/xt/xironbardepend/xironbackend\dataconfig/table.json'
+        location = 'E:/xt/xironbardepend/xironbackend\dataconfig/payrule.json'
+        with open(location, 'r', encoding='UTF-8') as fp:
             data = json.load(fp)
             return data
 

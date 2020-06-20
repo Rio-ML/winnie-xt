@@ -1,5 +1,17 @@
-{"table_type":{"bar": "4e39fec8-d9fe-4efe-838e-d02e93b71f2e", "name": "卡座qqn"},
-  "table_area":{"bar": "4e39fec8-d9fe-4efe-838e-d02e93b71f2e","name": "小精灵n"},
+{"table_type":{"bar": "4e39fec8-d9fe-4efe-838e-d02e93b71f2e", "name": "散台666"},
+  "table_area":{"bar": "4e39fec8-d9fe-4efe-838e-d02e93b71f2e","name": "小精灵"},
   "table_init":{"display_info": [{"name": "最大容纳人数", "value": "max_consumer_count"},{"name": "节目费", "value": "show_money"}], "open_table_money_enable": true, "show_money_enable": true, "latest_reserve_time": "20:01:00", "latest_open_time": "20:31:00", "display_color": {"empty": "color-empty", "reserved": "color-reserved", "entry": "color-entry", "repair": "color-repair", "lock": "color-lock"}},
-  "create_table1":{"show_money_type": "PER_TABLE", "name": "1128", "table_type": "", "area": "", "max_consumer_count": "1", "min_comsume_money": "123.45", "reserve_table_money": "0", "open_table_money": "1.11", "show_money": "55"}
+  "create_table1":{"show_money_type": "PER_TABLE", "name": "瓦 特1阿a有.弄啥嘞", "table_type": "", "area": "", "max_consumer_count": "2", "min_comsume_money": "123.45", "reserve_table_money": "0", "open_table_money": "1.11", "show_money": "55"},
+  "create_table2":{"show_money_type": "PER_CONSUMER", "name": "仲夏夜之梦", "table_type": "", "area": null, "max_consumer_count": "3", "min_comsume_money": "600", "reserve_table_money": "0", "open_table_money": "2.22", "show_money": "10"},
+  "reserve_table1":{"bar":"6995c109-11be-49fb-90b2-cc7369a800ca","table":"","consumer_name":"冉先生","consumer_phone":"18514714714","expired_at":"2021-04-16T09:22:55.677Z","ordered_by":"1175c21b-a030-483c-b060-a72d4ec8d43c"},
+  "reserve_table2":{"bar":"6995c109-11be-49fb-90b2-cc7369a800ca","table":"","consumer_name":"冉哥哥","consumer_phone":"18514714715","expired_at":"2021-04-16T09:22:55.677Z","ordered_by":"1175c21b-a030-483c-b060-a72d4ec8d43c"},
+  "reserve_done":{ },
+  "open_table1":{"bar":"6995c109-11be-49fb-90b2-cc7369a800ca","table":"","consumer_name":"冉先生","consumer_phone":"18514714714","consumer_amount":2,"ordered_by":"1175c21b-a030-483c-b060-a72d4ec8d43c","open_table_money":"1.11","show_money":"55.00"},
+  "open_table2":{"bar":"6995c109-11be-49fb-90b2-cc7369a800ca","table":"","consumer_name":"冉哥哥","consumer_phone":"18514714715","consumer_amount":3,"ordered_by":"1175c21b-a030-483c-b060-a72d4ec8d43c","open_table_money":"1.11","show_money":"55.00"},
+  "open_table3":{"bar":"6995c109-11be-49fb-90b2-cc7369a800ca","table":"","consumer_name":"冉妹妹","consumer_phone":"18514714716","consumer_amount":4,"ordered_by":"1175c21b-a030-483c-b060-a72d4ec8d43c","open_table_money":"2.22","show_money":40},
+  "target_table":{"target":""},
+  "reserve_bill":{"reserve_table_orders":""},
+  "reserve_pay":{"bill":"","pay_type":"CASH","type":"CONSUME"},
+  "bills1":{"tables":""},
+  "remark1":{"remark":"123取消。ab就是"}
 }
