@@ -1,4 +1,15 @@
 {"small_cabinet":{"passwordEnable":true,"longRentEnable":false,"shortRentEnable":true,"countRentEnable":false,"type":"a"},
   "big_cabinet":{"passwordEnable":true,"longRentEnable":false,"shortRentEnable":true,"countRentEnable":false,"type":"b"},
-  "pay_rule_error1":{"forgetPayRule":{"s":{"prepaid":1},"m":{"prepaid":1},"l":{"prepaid":1}},"payRule":{"s":{"beforeMoney":1,"beforeTime":5,"freeTime":2,"owingTime":10,"perMoney":100,"perTime":1,"prepaid":1,"topMoney":6,"topTime":50,"unlockCount":3,"endTime":0},"m":{"beforeMoney":0,"beforeTime":0,"freeTime":0,"owingTime":0,"perMoney":0,"perTime":0,"prepaid":0,"topMoney":0,"topTime":0,"unlockCount":3,"endTime":0},"l":{"beforeMoney":0,"beforeTime":0,"freeTime":0,"owingTime":0,"perMoney":0,"perTime":0,"prepaid":0,"topMoney":0,"topTime":0,"unlockCount":3,"endTime":0}}}
+  "pay_rule_error1":{"forgetPayRule":{"s":{"prepaid":1},"m":{"prepaid":1},"l":{"prepaid":1}},
+    "payRule": {"s":{"beforeMoney":1,"beforeTime":5,"freeTime":2,"owingTime":10,"perMoney":100,"perTime":1,"prepaid":1,"topMoney":6,"topTime":50,"unlockCount":3,"endTime":0},
+      "m":{"beforeMoney":0,"beforeTime":0,"freeTime":0,"owingTime":0,"perMoney":0,"perTime":0,"prepaid":0,"topMoney":0,"topTime":0,"unlockCount":3,"endTime":0},
+      "l":{"beforeMoney":0,"beforeTime":0,"freeTime":0,"owingTime":0,"perMoney":0,"perTime":0,"prepaid":0,"topMoney":0,"topTime":0,"unlockCount":3,"endTime":0}}},
+    "pay_rule_error2":{"forgetPayRule":{"s":{"prepaid":1},"m":{"prepaid":1},"l":{"prepaid":1}},
+      "payRule":{"s":{"beforeMoney":0,"beforeTime":0,"freeTime":2,"owingTime":0,"perMoney":0,"perTime":1,"prepaid":1,"topMoney":0,"topTime":0,"unlockCount":3,"endTime":0},
+        "m":{"beforeMoney":0,"beforeTime":0,"freeTime":0,"owingTime":0,"perMoney":0,"perTime":0,"prepaid":0,"topMoney":0,"topTime":0,"unlockCount":3,"endTime":0},
+        "l":{"beforeMoney":0,"beforeTime":0,"freeTime":0,"owingTime":0,"perMoney":0,"perTime":0,"prepaid":0,"topMoney":0,"topTime":0,"unlockCount":3,"endTime":0}}},
+    "pay_rule_error3":{"forgetPayRule":{"s":{"prepaid":1},"m":{"prepaid":1},"l":{"prepaid":1}},
+      "payRule": {"s":{"beforeMoney":1,"beforeTime":5,"freeTime":2,"owingTime":10,"perMoney":100,"perTime":1,"prepaid":1,"topMoney":6,"topTime":50,"unlockCount":3,"endTime":0},
+       "m":{"beforeMoney":0,"beforeTime":0,"freeTime":0,"owingTime":0,"perMoney":0,"perTime":0,"prepaid":0,"topMoney":0,"topTime":0,"unlockCount":3,"endTime":0},
+       "l":{"beforeMoney":0,"beforeTime":0,"freeTime":0,"owingTime":0,"perMoney":0,"perTime":0,"prepaid":0,"topMoney":0,"topTime":0,"unlockCount":3,"endTime":0}}}
 }
