@@ -14,19 +14,7 @@ from util.DriverInit import DriverInit
 class TestReserveTable(unittest.TestCase):
 
     def setUp(self):
-        # mobile_emulation = {'deviceName': 'iPhone X'}
-        # options = webdriver.ChromeOptions()
-        # options.add_experimental_option('mobileEmulation', mobile_emulation)
-        # # Windows 配置 开始
-        # self.driver = webdriver.Chrome(executable_path='chromedriver.exe', chrome_options=options)
-        # # Windows 配置 结束
-        # # mac 配置 开始
-        # # options.binary_location = "/Applications/IT/Google Chrome.app/Contents/MacOS/Google Chrome"
-        # # chrome_driver_binary = "/usr/local/bin/chromedriver"
-        # # self.driver = webdriver.Chrome(chrome_driver_binary, chrome_options=options)
-        # # mac 配置 结束
         self.driver = DriverInit().driver
-        # self.driver.open_url("http://wxadmin.wegui.cn/admin/#/")
         self.rb = RegisterBusiness(self.driver)
         self.rp = RegisterPage(self.driver)
 
@@ -39,7 +27,7 @@ class TestReserveTable(unittest.TestCase):
     def test_001(self):
         self.driver.implicitly_wait(30)
         # self.driver.maximize_window()
-        self.driver.open_url("http://wxadmin.wegui.cn/admin/#/")
+        self.rp.open_url("http://wxadmin.wegui.cn/admin/#/")
         self.rp.login('xiaod90', '123456')
         self.rb.contract_base()
         self.driver.close()

@@ -16,7 +16,4 @@ class DriverInit:
         # chrome_driver_binary = "/usr/local/bin/chromedriver"
         # self.driver = webdriver.Chrome(chrome_driver_binary, chrome_options=options)
         # mac 配置 结束
-        
-    # def open_url(self, url):
-    #     self.driver.get(url)
 
