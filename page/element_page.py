@@ -16,13 +16,18 @@ class RegisterPage(object):
         self.driver.get(url)
 
     # 登陆
-    def login(self, username, password):
+    def wx_login(self, username, password):
         self.register_h.input("//input[@placeholder='用户名']", username)
         self.register_h.input("//input[@placeholder='密码']", password)
         self.register_h.click("//button[@class='mint-button primary-btn mint-button--default mint-button--large']")
 
+    def web_login(self, username, password):
+        self.register_h.input("//input[@placeholder='登陆账号']", username)
+        self.register_h.input("//input[@placeholder='请输入密码']", password)
+        self.register_h.click("//span[text()='确定']")
+
     # 各种按钮
-    def all_button(self, a_button):
+    def wx_button(self, a_button):
         class_map = {
             "添加申请": "//span[text()='添加申请']/parent::*/parent::*",
             "提交申请": "//button[text()='提交申请']/parent::*",
@@ -39,8 +44,31 @@ class RegisterPage(object):
         assert a_button in class_map
         self.register_h.click(class_map[a_button])
 
+    def web_button(self, a_button, shop=None):
+        if shop is None:
+            shop = ''
+        class_map = {
+            "添加优惠券": "//button[@type='button']/span[text()='添加优惠券']",
+            "优惠券类型": "//input[@placeholder='请选择vip类型']",
+            "普通优惠券": "//span[text()='普通优惠券']",
+            "vip券": "//span[text()='vip券']",
+            "抵扣类型": "//label[text()='抵扣类型']/following-sibling::*/div",
+            "普通-抵扣现金": "//span[text()='抵扣现金']",
+            "vip券-抵扣现金": "//span[text()='vip券']/ancestor::*[5]/following-sibling::*/div/div/ul/li/span[text()='抵扣现金']",
+            "日通票": "//span[text()='日通票']",
+            "抵扣时长": "//span[text()='抵扣时长']",
+            "所属商户": "//input[@placeholder='请选择所属商户']",
+            "商户": "//span[text()='" + shop + "']",
+            "状态": "//label[text()='状态']/following-sibling::*/div",
+            "上架": "//span[text()='上架']",
+            "下架": "//span[text()='下架']",
+            "添加优惠券-确定": "//div[@aria-label='添加优惠券']/div/div/button/span[text()='确 定']"
+        }
+        assert a_button in class_map
+        self.register_h.click(class_map[a_button])
+
     # 各种输入框
-    def input_text(self, location_box, value):
+    def wx_input_text(self, location_box, value):
         class_map = {
             "网点名称": "//input[@placeholder='请输入网点名称']",
             "联系人": "//input[@placeholder='请输入联系人']",
@@ -58,6 +86,21 @@ class RegisterPage(object):
             "其它分成": "//input[@placeholder='请注明']",
             "其它费用": "//input[@placeholder='搬运费、打包等']",
             "备注": "//textarea[@class='textarea']"
+        }
+        assert location_box in class_map
+        self.register_h.input(class_map[location_box], value)
+
+    def web_input_text(self, location_box, value):
+        class_map = {
+            "优惠券名称": "//label[text()='优惠券名称']/following-sibling::*/div/input",
+            "简介": "//label[text()='简介']/following-sibling::*/div/input",
+            "面值": "//label[text()='面值']/parent::*/div/div",
+            "售价": "//label[text()='售价']/following-sibling::*/div",
+            "库存": "//label[text()='库存']/following-sibling::*/div",
+            "可抵扣次数": "//label[text()='可抵扣次数']/following-sibling::*/div",
+            "备注": "//label[text()='备注']/following-sibling::*/div",
+            "抵扣时长": "//label[text()='抵扣时长']/following-sibling::*/div",
+            "vip等级": "//label[text()='vip等级']/following-sibling::*/div/input"
         }
         assert location_box in class_map
         self.register_h.input(class_map[location_box], value)
@@ -113,6 +156,10 @@ class RegisterPage(object):
         WebDriverWait(self.driver, 20).until(
             EC.presence_of_element_located((By.XPATH, class_map[xpath]))).send_keys(photo)
 
-    # 小铁工具的menu
+    # 微信管理端 小铁工具的menu
     def open_xt_menu(self, menu):
         self.register_h.click("//div[text()='" + menu + "']/parent::*/parent::*")
+
+    # 后台管理的menu
+    def open_web_menu(self, menu):
+        self.register_h.click("//span[@title='" + menu + "']")

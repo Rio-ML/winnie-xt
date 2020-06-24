@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from base.find_element import FindElement
+
+
 class RegisterPageMu(object):
     def __init__(self, driver):
         self.fd = FindElement(driver)
