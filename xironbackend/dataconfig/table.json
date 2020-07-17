@@ -13,5 +13,6 @@
   "reserve_bill":{"reserve_table_orders":""},
   "reserve_pay":{"bill":"","pay_type":"CASH","type":"CONSUME"},
   "bills1":{"tables":""},
-  "remark1":{"remark":"123取消。ab就是"}
+  "remark1":{"remark":"123取消。ab就是"},
+  "cancel_memory": {"status":"cancel","remark":""}
 }

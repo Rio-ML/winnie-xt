@@ -16,7 +16,7 @@ class RunTest(unittest.TestCase):
         unittest.TestCase.__init__(self)
         xiao_iron = 'E:/xt/xtcontract/xironbackend/dataconfig/'
         self.run_method = RunMethod()
-        self.data = GetData(xiao_iron + 'interfacebar1.xlsx', 7)
+        self.data = GetData(xiao_iron + 'interfacebar1.xlsx', 8)
         self.send_mai = SendEmail()
         self.read_int = ReadIni()
         self.statistic = Dict()

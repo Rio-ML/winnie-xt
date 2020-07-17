@@ -1,6 +1,6 @@
-from ..util.operation_excel import OperationExcel
+from util.operation_excel import OperationExcel
 from data import data_config
-from ..util.operation_json import OperationJson
+from util.operation_json import OperationJson
 
 
 class GetData:
