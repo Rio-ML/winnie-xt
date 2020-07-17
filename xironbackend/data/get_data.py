@@ -1,5 +1,5 @@
 from ..util.operation_excel import OperationExcel
-from xironbackend.data import data_config
+from data import data_config
 from ..util.operation_json import OperationJson
 
 

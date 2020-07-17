@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-from xironbackend.Base.runmethod import RunMethod
-from xironbackend.data.get_data import GetData
-from xironbackend.util.common_util import CommonUtil
-from xironbackend.util.send_email import SendEmail
-from xironbackend.util.read_ini import ReadIni
-from xironbackend.data.dependent_data_json import DependentDataJson
-from xironbackend.data.Dict import Dict
+from Base.runmethod import RunMethod
+from data.get_data import GetData
+from util.common_util import CommonUtil
+from util.send_email import SendEmail
+from util.read_ini import ReadIni
+from data.dependent_data_json import DependentDataJson
+from data.Dict import Dict
 
 import json
 import unittest

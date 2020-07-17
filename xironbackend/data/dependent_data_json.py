@@ -1,8 +1,8 @@
-from xironbackend.util.operation_excel import OperationExcel
-from xironbackend.data.get_data import GetData
+from util.operation_excel import OperationExcel
+from data.get_data import GetData
 import json
-from xironbackend.util.read_ini import ReadIni
-from xironbackend.util.common_util import CommonUtil
+from util.read_ini import ReadIni
+from util.common_util import CommonUtil
 
 
 class DependentDataJson:

@@ -5,7 +5,7 @@
 # print('aa' in a)
 
 
-from xironbackend.data.Dict import Dict
+from data.Dict import Dict
 import json
 
 

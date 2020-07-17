@@ -1,5 +1,5 @@
 import json
-from xironbackend.data.Dict import Dict
+from data.Dict import Dict
 
 
 class CommonUtil:
