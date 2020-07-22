@@ -20,7 +20,7 @@ from jsonpath_rw import jsonpath, parse
 
 
 def get_json_value(json_data, key_name):
-    #获取到json中任意key的值,结果为list格式
+    #获取到json中任意key的值,结果为list格式ba
     key_value = jsonpath.jsonpath(json_data, '$..{key_name}'.format(key_name=key_name))
     # key_value = jsonpath.jsonpath(json_data, '$..' + key_name + "'")
     # key_value = jsonpath.jsonpath(json_data, '$..{}'.format(key_name))
