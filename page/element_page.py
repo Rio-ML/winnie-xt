@@ -3,7 +3,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
-
+import json
+from util.DriverInit import DriverInit
 from handle.get_utils import ActionUtil
 
 
@@ -17,9 +18,16 @@ class RegisterPage(object):
 
     # 登陆
     def wx_login(self, username, password):
+        self.register_h.clear("//input[@placeholder='用户名']")
         self.register_h.input("//input[@placeholder='用户名']", username)
+        self.register_h.clear("//input[@placeholder='密码']")
         self.register_h.input("//input[@placeholder='密码']", password)
         self.register_h.click("//button[@class='mint-button primary-btn mint-button--default mint-button--large']")
+
+    # 微信管理端推出登陆
+    def wx_logout(self):
+        self.register_h.click("//div[@class='router_desc' and text()='设置']")
+        self.register_h.click("//span[@class='logout']")
 
     def web_login(self, username, password):
         self.register_h.input("//input[@placeholder='登陆账号']", username)
@@ -163,3 +171,58 @@ class RegisterPage(object):
     # 后台管理的menu
     def open_web_menu(self, menu):
         self.register_h.click("//span[@title='" + menu + "']")
+
+    # 微信管理端 各种权限对应的权限模块
+    def wx_power_list(self, power_list):
+        class_map = {
+            "main": ['快捷管理', '机柜管理', '订单管理', '收益记录', '数据统计', '提现', '设置'],
+            "operator": ['快捷管理', '机柜管理', '订单管理', '设置'],
+            "accountant": ['快捷管理', '收益记录', '数据统计', '提现', '设置'],
+            "partner": ['快捷管理', '机柜管理', '收益记录', '设置'],
+            "regulator": ['快捷管理', '机柜管理', '收益记录', '提现', '设置']
+        }
+        return class_map[power_list]
+
+    # 微信管理端 各种权限设置
+    def wx_power(self, role, web, wxadmin, withdraw, quickManage, orderNRecord, baseCount):
+        data = '{"username":"shop","roleType":"operator","gender":"male","phone":"asd","remark":"","nickname":"sad","status":"normal",' \
+               '"passport":{"web":true,"wxadmin":true,"withdraw":true,"quickManage":true,"orderNRecord":true,"baseCount":true},' \
+               '"managerRole":{"__type":"Pointer","className":"ManagerRole","objectId":"tKTfO0KLu5"}}'
+        list = {'main': 'vlPSXU5EM3', 'operator': 'G6manc1tnY', 'accountant': 'tKTfO0KLu5', 'partner': 'phmyTlJNle',
+                'regulator': 'AtfQDan6NH'}
+        data_obj = json.loads(data)
+        data_obj['roleType'] = role
+        data_obj['passport']['web'] = web
+        data_obj['passport']['wxadmin'] = wxadmin
+        data_obj['passport']['withdraw'] = withdraw
+        data_obj['passport']['quickManage'] = quickManage
+        data_obj['passport']['orderNRecord'] = orderNRecord
+        data_obj['passport']['baseCount'] = baseCount
+        data_obj['managerRole']['objectId'] = list[role]
+        return json.dumps(data_obj)
+
+    def power_enum(self):
+        class_map = {
+            "main": [True, True, True, True, True, True],
+            "main_close_quickMange": [True, True, True, False, True, True],
+            "main_close_withdraw": [True, True, False, True, True, True],
+            "main_close_baseCount": [True, True, True, True, True, False],
+            "operator": [False, True, True, True, True, True],
+            "operator_close_quickMange": [True, True, True, True, True, True],
+            "operator_close_withdraw": [True, True, False, True, True, True],
+            "operator_close_baseCount": [True, True, True, True, True, False],
+            "accountant": [True, True, True, True, True, True],
+            "accountant_close_quickMange": [True, True, True, False, True, True],
+            "accountant_close_withdraw": [True, True, False, True, True, True],
+            "accountant_close_baseCount": [True, True, True, True, True, False],
+            "partner": [True, True, True, True, True, True],
+            "partner_close_quickMange": [True, True, True, False, True, True],
+            "partner_close_withdraw": [True, True, False, True, True, True],
+            "partner_close_baseCount": [True, True, True, True, True, False],
+            "regulator": [True, True, True, True, True, True],
+            "regulator_close_quickMange": [True, True, True, False, True, True],
+            "regulator_close_withdraw": [True, True, False, True, True, True],
+            "regulator_close_baseCount": [True, True, True, True, True, False],
+        }
+        return class_map
+

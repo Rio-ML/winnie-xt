@@ -8,7 +8,7 @@ options.add_experimental_option('mobileEmulation', mobileEmulation)
 driver = webdriver.Chrome(executable_path='chromedriver.exe', chrome_options=options)
 driver.get('http://wxadmin.wegui.cn/admin/#/')
 
-ActionUtil.input(driver, "//input[@placeholder='用户名']", 'xiaod90')
+ActionUtil.input(driver,"//input[@placeholder='用户名']", 'xiaod90')
 ActionUtil.input(driver, "//input[@placeholder='密码']", '123456')
 ActionUtil.click(driver, "//button[@class='mint-button primary-btn mint-button--default mint-button--large']")
 ActionUtil.click(driver, "//div[contains(text(),'合同审批(新)')]/parent::*/parent::*")
