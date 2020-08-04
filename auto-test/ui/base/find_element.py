@@ -23,7 +23,7 @@ class FindElement(object):
             else:
                 return self.driver.find_element_by_xpath(value)
         except Exception as e:
-            self.driver.save_screenshot('E:/xt/barselenium/report/%s.png' %value)
+            self.driver.save_screenshot('/Users/ranmenglong/workspace/winnie/xtselenium/base/%s.png' %value)
             print(e)
             return None
 

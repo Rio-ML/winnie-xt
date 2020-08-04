@@ -1,0 +1,25 @@
+{"login":{"username": "xiaodwx", "password": "123456"},
+  "loginbar":{"username": "lwd", "password": "sr19990526"},
+  "addagent":{"name":"022602","contact":"","phone":"","status":"normal","remark":"","type":"self","platform":{"__type":"Pointer","className":"Platform","objectId":"OcJwWMHthN"}},
+  "editagent":{"name":"022602","phone":"","status":"normal","remark":"","contact":"","type":"market"},
+  "bars_list":{
+    "count": 0,
+    "next": "http://example.com",
+    "previous": "http://example.com",
+    "results": [{
+            "id": "4e39fec8-d9fe-4efe-838e-d02e93b71f2e",
+            "created_at": "2020-03-20T15:15:44Z",
+            "node": "string",
+            "name": "string",
+            "logo": "http://example.com"}]
+},
+  "create_area_dxs": {"bar": "4e39fec8-d9fe-4efe-838e-d02e93b71f2e", "name": "dxs"},
+  "create_area_dxs1": {"bar": "4e39fec8-d9fe-4efe-838e-d02e93b71f2e", "name": "dxs1"},
+  "create_area_dxs1space": {"bar": "4e39fec8-d9fe-4efe-838e-d02e93b71f2e", "name": " dxs1 "},
+  "create_area_space_dxs1": {"bar": "4e39fec8-d9fe-4efe-838e-d02e93b71f2e", "name": "dxs 1"},
+  "create_area_dxs2": {"bar": "4e39fec8-d9fe-4efe-838e-d02e93b71f2e", "name": "dxs2"},
+  "get_area_list_dxs_1": {"name": "dxs 1"},
+  "get_area_list_dxs": {"name": " dxs "},
+  "update_area_name_to_dxs": {"name": "dxs"},
+  "update_area_name_to_dxs3": {"name": "dxs3"}
+}

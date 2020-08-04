@@ -1,64 +1,50 @@
 # -*- coding: utf-8 -*-f
-from handle.register_handle import RegisterHandle
 import time
+from handle.get_utils import ActionUtil
+from page.element_page import RegisterPage
 
 
 class RegisterBusiness(object):
     def __init__(self, driver):
-        self.register_h = RegisterHandle(driver)
+        self.register_h = ActionUtil(driver)
+        self.driver = driver
+        self.rp = RegisterPage(driver)
 
-    def user_base(self, user_name, staff_phone, national, staff_id, id_place_input, live_input, contact_name, contact_phone, height, weight):
-        # self.register_h.register_p.implicitly_wait(3)
-        self.register_h.send_user_name(user_name)
-        time.sleep(2)
-        self.register_h.send_staff_phone(staff_phone)
-        time.sleep(2)
-        self.register_h.send_staff_national(national)
-        time.sleep(2)
-        self.register_h.send_staff_id(staff_id)
-        time.sleep(2)
-        self.register_h.send_staff_id_place_input(id_place_input)
-        time.sleep(2)
-        self.register_h.send_staff_live_input(live_input)
-        time.sleep(2)
-        self.register_h.send_staff_contact_name(contact_name)
-        time.sleep(2)
-        self.register_h.send_contact_phone(contact_phone)
-        time.sleep(2)
-        self.register_h.send_staff_height(height)
-        time.sleep(2)
-        self.register_h.send_staff_weight(weight)
-        time.sleep(2)
-        self.register_h.click_register_button()
+    def contract_base(self):
+        self.driver.implicitly_wait(30)
+        time.sleep(1)
+        self.rp.open_xt_menu('合同审批(新)')
+        self.rp.wx_button("添加申请")
+        self.rp.wx_input_text("网点名称", "2020061701")
+        self.rp.drop_down_box("场景分类", "运动健身")
+        self.rp.wx_input_text("联系人", "飞鸟")
+        self.rp.wx_input_text("联系电话", "15588889999")
+        self.rp.wx_input_text("营业开始时间", "120")
+        self.register_h.click("//input[@placeholder='请选择营业开始时间']")
+        self.rp.wx_button("营业时间-确认")
+        self.register_h.click("//input[@placeholder='请选择营业结束时间']")
+        self.rp.wx_button("营业时间-确认")
+        self.rp.wx_input_text("网点地址", "河东狮吼")
+        self.rp.wx_input_text("每日营收", "12")
+        self.rp.wx_input_text("营业时长", "12")
+        self.rp.wx_input_text("场地人流量", "12")
+        self.rp.wx_input_text("场地规模", "12")
+        self.rp.wx_input_text("收费规则", "12")
+        self.rp.wx_input_text("平台分成", "100")
+        self.rp.wx_input_text("其它费用", "12")
+        time.sleep(1)
+        # 滚动
+        js = "window.scrollTo(100,1500)"
+        self.driver.execute_script(js)
+        time.sleep(1)
+        self.rp.check_box("其它环境-海边")
+        self.rp.wx_button("添加柜组")
+        self.rp.wx_button("添加柜组-主柜加")
+        self.rp.wx_button("修改柜组-确定")
+        self.rp.add_photo("门头照", "E:/xt/xtselenium/util/v.png")
+        self.rp.wx_button("提交申请")
+        self.rp.drop_down_box("请选择审批人", "rwvgkYZmKm")
+        self.rp.wx_button("请选择审批人-确定")
+        # self.rp.all_button(self.driver, "提交成功-确定")
 
-    def register_success(self):
-        if self.register_h.get_user_text() == None:
-            return True
-        else:
-            return False
-
-    # 执行操作
-    def login_user_name_error(self, user_name, user_pwd):
-        self.user_base(user_name, user_pwd)
-        if self.register_h.get_user_text('user_name_error', "请输入账号"):
-            # print("用户名填写错误")
-            return True
-        else:
-            return False
-
-    def login_user_pwd_error(self, user_name, user_pwd):
-        self.user_base(user_name, user_pwd)
-        if self.register_h.get_user_text('user_pwd_error', "请输入密码"):
-            # print("密码检验不成功")
-            return True
-        else:
-            return False
-
-    def login_fail(self, user_name, user_pwd):
-        self.user_base(user_name, user_pwd)
-        if self.register_h.get_user_text('login_fail', "登录失败"):
-            # print("密码检验不成功")
-            return True
-        else:
-            return False
 
