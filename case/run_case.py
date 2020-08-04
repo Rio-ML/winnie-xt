@@ -189,13 +189,22 @@ from pytesseract.pytesseract import image_to_string
 # put = requests.put(url, data=json.dumps(data), headers=headers)
 # print(put.json())
 # print("权限错误", '\n', 'right_list', '\n', 'lists')
-role = 'regulator'
-data = '{"username":"shop","roleType":"operator","gender":"male","phone":"asd","remark":"","nickname":"sad","status":"normal",' \
-       '"passport":{"web":true,"wxadmin":true,"withdraw":true,"quickManage":true,"orderNRecord":true,"baseCount":true},' \
-       '"managerRole":{"__type":"Pointer","className":"ManagerRole","objectId":"tKTfO0KLu5"}}'
-list = {'main': 'vlPSXU5EM3', 'operator': 'G6manc1tnY', 'accountant': 'tKTfO0KLu5', 'partner': 'phmyTlJNle', 'regulator': 'AtfQDan6NH'}
-data_obj = json.loads(data)
-data_obj['roleType'] = role
-data_obj['managerRole']['objectId'] = list[role]
-print(list[role])
-print(json.dumps(data_obj))
+# role = 'regulator'
+# data = '{"username":"shop","roleType":"operator","gender":"male","phone":"asd","remark":"","nickname":"sad","status":"normal",' \
+#        '"passport":{"web":true,"wxadmin":true,"withdraw":true,"quickManage":true,"orderNRecord":true,"baseCount":true},' \
+#        '"managerRole":{"__type":"Pointer","className":"ManagerRole","objectId":"tKTfO0KLu5"}}'
+# list = {'main': 'vlPSXU5EM3', 'operator': 'G6manc1tnY', 'accountant': 'tKTfO0KLu5', 'partner': 'phmyTlJNle', 'regulator': 'AtfQDan6NH'}
+# data_obj = json.loads(data)
+# data_obj['roleType'] = role
+# data_obj['managerRole']['objectId'] = list[role]
+# print(list[role])
+# print(json.dumps(data_obj))
+
+
+list = ['tt', 'aa', 'bb']
+if 'ee' in list:
+    list.remove('ee')
+    print(list)
+else:
+    # list.remove('ee')
+    print(list)

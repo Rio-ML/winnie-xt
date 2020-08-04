@@ -172,8 +172,8 @@ class RegisterPage(object):
     def open_web_menu(self, menu):
         self.register_h.click("//span[@title='" + menu + "']")
 
-    # 微信管理端 各种权限对应的权限模块
-    def wx_power_list(self, power_list):
+    # 微信管理端 商户各种权限对应的权限模块
+    def wx_shop_power_list(self, power_list):
         class_map = {
             "main": ['快捷管理', '机柜管理', '订单管理', '收益记录', '数据统计', '提现', '设置'],
             "operator": ['快捷管理', '机柜管理', '订单管理', '设置'],
@@ -183,13 +183,23 @@ class RegisterPage(object):
         }
         return class_map[power_list]
 
-    # 微信管理端 各种权限设置
-    def wx_power(self, role, web, wxadmin, withdraw, quickManage, orderNRecord, baseCount):
+    # 微信管理端 合作商各种权限对应的权限模块
+    def wx_agent_power_list(self, power_list):
+        class_map = {
+            "main": ['网点管理', '机柜管理', '订单管理', '审批', '合同审批', '发货申请', '合同审批(新)', '发货申请(新)', '收益记录', '数据统计', '提现', '满柜监控', '客户报备', '峰值统计', '设置'],
+            "operator": ['网点管理', '机柜管理', '订单管理', '审批', '合同审批', '发货申请', '合同审批(新)', '发货申请(新)', '满柜监控', '设置'],
+            "accountant": ['审批', '收益记录', '数据统计', '提现', '设置'],
+            "partner": ['机柜管理', '审批', '收益记录', '设置'],
+            "regulator": ['机柜管理', '审批', '收益记录', '提现', '设置']
+        }
+        return class_map[power_list]
+
+    # 微信管理端 商户各种权限设置
+    def wx_shop_power(self, role, web, wxadmin, withdraw, quickManage, orderNRecord, baseCount):
         data = '{"username":"shop","roleType":"operator","gender":"male","phone":"asd","remark":"","nickname":"sad","status":"normal",' \
                '"passport":{"web":true,"wxadmin":true,"withdraw":true,"quickManage":true,"orderNRecord":true,"baseCount":true},' \
                '"managerRole":{"__type":"Pointer","className":"ManagerRole","objectId":"tKTfO0KLu5"}}'
-        list = {'main': 'vlPSXU5EM3', 'operator': 'G6manc1tnY', 'accountant': 'tKTfO0KLu5', 'partner': 'phmyTlJNle',
-                'regulator': 'AtfQDan6NH'}
+        list = {'main': 'vlPSXU5EM3', 'operator': 'G6manc1tnY', 'accountant': 'tKTfO0KLu5', 'partner': 'phmyTlJNle', 'regulator': 'AtfQDan6NH'}
         data_obj = json.loads(data)
         data_obj['roleType'] = role
         data_obj['passport']['web'] = web
@@ -198,6 +208,20 @@ class RegisterPage(object):
         data_obj['passport']['quickManage'] = quickManage
         data_obj['passport']['orderNRecord'] = orderNRecord
         data_obj['passport']['baseCount'] = baseCount
+        data_obj['managerRole']['objectId'] = list[role]
+        return json.dumps(data_obj)
+
+    # 微信管理端 合作商各种权限设置
+    def wx_agent_power(self, role, web, wxadmin, withdraw):
+        data = '{"username":"xd05","roleType":"main","gender":"male","phone":"111111","remark":"","nickname":"11111111","status":"normal",' \
+               '"passport":{"web":true,"wxadmin":true,"withdraw":true},' \
+               '"managerRole":{"__type":"Pointer","className":"ManagerRole","objectId":"vlPSXU5EM3"}}'
+        list = {'main': 'vlPSXU5EM3', 'operator': 'G6manc1tnY', 'accountant': 'tKTfO0KLu5', 'partner': 'phmyTlJNle', 'regulator': 'AtfQDan6NH'}
+        data_obj = json.loads(data)
+        data_obj['roleType'] = role
+        data_obj['passport']['web'] = web
+        data_obj['passport']['wxadmin'] = wxadmin
+        data_obj['passport']['withdraw'] = withdraw
         data_obj['managerRole']['objectId'] = list[role]
         return json.dumps(data_obj)
 
