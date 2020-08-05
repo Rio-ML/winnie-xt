@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-from Base.runmethod import RunMethod
-from data.get_data import GetData
-from data.dependent_data import DependentData
-from util.send_email import SendEmail
-from util.read_ini import ReadIni
+from api.Base.runmethod import RunMethod
+from api.data.get_data import GetData
+from api.data.dependent_data import DependentData
+from api.util.send_email import SendEmail
+from api.util.read_ini import ReadIni
 
 import json
 import unittest

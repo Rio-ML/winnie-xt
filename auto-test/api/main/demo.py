@@ -5,7 +5,7 @@
 # print('aa' in a)
 
 
-from data.Dict import Dict
+from api.data.Dict import Dict
 import json
 
 

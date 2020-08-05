@@ -2,9 +2,9 @@
 from selenium import webdriver
 import unittest
 import time
-from business.register_business import RegisterBusiness
-from page.element_page import RegisterPage
-from util.DriverInit import DriverInit
+from ui.business.register_business import RegisterBusiness
+from ui.page.element_page import RegisterPage
+from ui.util.DriverInit import DriverInit
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select

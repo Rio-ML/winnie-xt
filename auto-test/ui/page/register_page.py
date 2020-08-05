@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from base.find_element import FindElement
+from ui.base.find_element import FindElement
 
 
 class RegisterPageMu(object):

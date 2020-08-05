@@ -10,7 +10,7 @@ class OperationJson:
     def read_data():
         # location = '/Users/ranmenglong/workspace/github/xironbar/xironbackend/dataconfig/loginjson.json'
         # location = 'E:/xt/xironbardepend/xironbackend/dataconfig/table.json'
-        location = 'E:/xt/xtcontract/xironbackend/dataconfig/table.json'
+        location = 'E:/xt/winnie-xt/auto-test/api/dataconfig/table.json'
         with open(location, 'r', encoding='UTF-8') as fp:
             data = json.load(fp)
             return data

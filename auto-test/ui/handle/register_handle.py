@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from page.register_page import RegisterPageMu
+from ui.page.register_page import RegisterPageMu
 import time
 
 

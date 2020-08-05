@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from selenium.webdriver import ActionChains
-from business.register_business import RegisterBusiness
+from ui.business.register_business import RegisterBusiness
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By

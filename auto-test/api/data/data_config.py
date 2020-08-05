@@ -70,7 +70,11 @@ def get_run():
     return ExcelField.run
 
 
-# # 酒吧登录的header
+'''
+酒吧登录的header
+'''
+
+
 # def get_login_header_value():
 #     header = {
 #             'Content-Type': 'application/json'
@@ -117,7 +121,11 @@ def get_run():
 #     return pc_header
 
 
-# 小铁header
+'''
+小铁登录的header
+'''
+
+
 def get_login_header_value():
     header = {
             'Content-Type': 'application/json',

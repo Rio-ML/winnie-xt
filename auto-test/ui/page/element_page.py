@@ -4,8 +4,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 import json
-from util.DriverInit import DriverInit
-from handle.get_utils import ActionUtil
+from ui.util.DriverInit import DriverInit
+from ui.handle.get_utils import ActionUtil
 
 
 class RegisterPage(object):

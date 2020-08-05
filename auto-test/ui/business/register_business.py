@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-f
 import time
-from handle.get_utils import ActionUtil
-from page.element_page import RegisterPage
+from ui.handle.get_utils import ActionUtil
+from ui.page.element_page import RegisterPage
 
 
 class RegisterBusiness(object):

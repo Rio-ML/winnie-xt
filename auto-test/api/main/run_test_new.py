@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
-from Base.runmethod import RunMethod
-from data.get_data import GetData
-from util.common_util import CommonUtil
-from util.send_email import SendEmail
-from util.read_ini import ReadIni
-from data.dependent_data_json import DependentDataJson
-from data.Dict import Dict
-
+from api.Base.runmethod import RunMethod
+from api.data.get_data import GetData
+from api.util.common_util import CommonUtil
+from api.util.send_email import SendEmail
+from api.util.read_ini import ReadIni
+from api.data.dependent_data_json import DependentDataJson
+from api.data.Dict import Dict
 import json
 import unittest
 
@@ -14,9 +13,9 @@ import unittest
 class RunTest(unittest.TestCase):
     def __init__(self):
         unittest.TestCase.__init__(self)
-        xiao_iron = 'E:/xt/xtcontract/xironbackend/dataconfig/'
+        xiao_iron = 'E:/xt/winnie-xt/auto-test/api/'
         self.run_method = RunMethod()
-        self.data = GetData(xiao_iron + 'interfacebar1.xlsx', 8)
+        self.data = GetData(xiao_iron + 'dataconfig/interfacebar1.xlsx', 8)
         self.send_mai = SendEmail()
         self.read_int = ReadIni()
         self.statistic = Dict()

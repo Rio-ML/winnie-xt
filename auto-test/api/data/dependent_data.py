@@ -1,15 +1,15 @@
-from util.operation_excel import OperationExcel
-from Base.runmethod import RunMethod
-from data.get_data import GetData
+from api.util.operation_excel import OperationExcel
+from api.Base.runmethod import RunMethod
+from api.data.get_data import GetData
 import json
-from util.read_ini import ReadIni
+from api.util.read_ini import ReadIni
 
 
 class DependentData:
     def __init__(self, case_id):
         self.case_id = case_id
         self.opera_excel = OperationExcel()
-        xiao_iron = 'E:/xt/xironbardepend/xironbackend/'
+        xiao_iron = 'E:/xt/winnie-xt/auto-test/api/'
         self.data = GetData(xiao_iron + 'dataconfig/interfacebar1.xlsx', 2)
         self.read_ini = ReadIni()
 

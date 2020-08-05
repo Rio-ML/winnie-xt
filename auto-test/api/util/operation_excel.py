@@ -7,7 +7,7 @@ class OperationExcel:
         if file_name:
             self.file_name = file_name
         else:
-            self.file_name = 'E:/xt/xironbardepend/xironbackend/dataconfig/interfacebar1.xlsx'
+            self.file_name = 'E:/xt/winnie-xt/auto-test/api/dataconfig/interfacebar1.xlsx'
 
         if sheet_id:
             self.sheet_id = sheet_id

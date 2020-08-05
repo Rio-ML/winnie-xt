@@ -1,5 +1,5 @@
 from selenium.webdriver.common.keys import Keys
-from handle.get_utils import ActionUtil
+from ui.handle.get_utils import ActionUtil
 from selenium import webdriver
 
 mobileEmulation = {'deviceName': 'iPhone X'}

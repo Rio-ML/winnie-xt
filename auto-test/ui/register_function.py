@@ -2,7 +2,8 @@
 from selenium import webdriver
 import time
 import random
-from find_element import FindElement
+from ui.base.find_element import FindElement
+
 
 # # =======根据电脑软件安装配置，请勿修改======
 # options = webdriver.ChromeOptions()

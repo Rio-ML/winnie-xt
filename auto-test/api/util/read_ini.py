@@ -6,7 +6,7 @@ class ReadIni(object):
 
     def __init__(self, file_name=None, node=None):
         if file_name is None:
-            file_name = "E:/xt/xironbardepend/xironbackend/dataconfig/api.ini"
+            file_name = "E:/xt/winnie-xt/auto-test/api/dataconfig/api.ini"
         if node is None:
             self.node = "BaseUrl"
         else:

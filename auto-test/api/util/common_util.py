@@ -1,5 +1,5 @@
 import json
-from data.Dict import Dict
+from api.data.Dict import Dict
 
 
 class CommonUtil:
