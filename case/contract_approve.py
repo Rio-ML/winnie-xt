@@ -93,7 +93,7 @@ class TestReserveTable(unittest.TestCase):
         print(lists[0].split('\n'))
         print(len(lists[0].split('\n')))
 
-    # @unittest.skip('不执行')
+    @unittest.skip('不执行')
     # 商户权限
     # 【main管理员】快捷管理（配置），机柜管理，订单管理，收益记录，数据统计（配置），兑换统计（写死xd1），提现（配置），设置
     # 【operator运维员】快捷管理（配置），机柜管理，订单管理，设置
@@ -126,7 +126,7 @@ class TestReserveTable(unittest.TestCase):
                 print('所有权限:', role + "权限错误", '\n', right_list, '\n', lists)
             self.rp.wx_logout()
 
-    # @unittest.skip('不执行')
+    @unittest.skip('不执行')
     # 商户权限-无提现模块
     def test_006(self):
         url = 'http://debug2.wegui.cn/v1/users/hYerDH4nHm'
@@ -156,7 +156,7 @@ class TestReserveTable(unittest.TestCase):
                     print('关闭提现权限:', role + "权限错误", '\n', right_list, '\n', lists)
                 # self.rp.wx_logout()
 
-    # @unittest.skip('不执行')
+    @unittest.skip('不执行')
     # 商户权限-无快捷管理权限
     def test_007(self):
         url = 'http://debug2.wegui.cn/v1/users/hYerDH4nHm'
@@ -185,7 +185,7 @@ class TestReserveTable(unittest.TestCase):
                 print('关闭快捷管理权限:', role + "权限错误", '\n', right_list, '\n', lists)
             # self.rp.wx_logout()
 
-    # @unittest.skip('不执行')
+    @unittest.skip('不执行')
     # 商户权限-无商户基础报告权限，数据统计
     def test_008(self):
         url = 'http://debug2.wegui.cn/v1/users/hYerDH4nHm'
@@ -215,7 +215,7 @@ class TestReserveTable(unittest.TestCase):
                     print('关闭数据统计权限:', role + "权限错误", '\n', right_list, '\n', lists)
                 # self.rp.wx_logout()
 
-    # @unittest.skip('不执行')
+    @unittest.skip('不执行')
     # 合作商权限
     # 【管理员】网点管理，机柜管理，订单管理，审批，合同审批，发货申请，合同审批（新），发货申请（新），收益记录，数据统计，提现（配置），满柜监控，客户报备，峰值统计，设置
     # 【运维员】网点管理，机柜管理，订单管理，审批，合同审批，发货申请，合同审批（新），发货申请（新），满柜监控，设置
@@ -249,7 +249,7 @@ class TestReserveTable(unittest.TestCase):
                 print('所有权限:', role + "权限错误", '\n', right_list, '\n', lists)
             # self.rp.wx_logout()
 
-    # @unittest.skip('不执行')
+    @unittest.skip('不执行')
     # 合作商权限-无提现权限
     def test_010(self):
         url = 'http://debug2.wegui.cn/v1/users/TnSFqkLR9D'
@@ -280,15 +280,67 @@ class TestReserveTable(unittest.TestCase):
                     print('关闭数据统计权限:', role + "权限错误", '\n', right_list, '\n', lists)
                 self.rp.wx_logout()
 
-    @unittest.skip('不执行')
-    # 出资人权限
-    # 【管理员】
-    # 【运维员】
-    # 【财务员】
-    # 【总营收管理员】
-    # 【分成管理员】
+    # @unittest.skip('不执行')
+    # 出资人权限-无提现权限
+    # 【管理员】机柜管理，订单管理，收益统计，提现，数据概况，数据分析，设置
     def test_011(self):
-        pass
+        url = 'http://debug2.wegui.cn/v1/users/MCenqjtx4R'
+        headers = {"Content-Type": "application/json",
+                   "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
+                   "Xi-Session-Token": "r:8ceacf261f6da1b17ecbbb2b86db29d0"}
+        role_list = ['main']
+        for role in role_list:
+            # 布尔值 web（后台登陆）,wxadmin（微信管理端），withdraw（提现）
+            data = self.rp.wx_investor_power(role, True, True, True)
+            requests.put(url, data=data, headers=headers)
+            self.driver.implicitly_wait(30)
+            self.rp.open_url("http://wxadmin.wegui.cn/admin/#/")
+            self.rp.wx_login('xd153', 'abc123')
+            names = WebDriverWait(self.driver, 20).until(
+                EC.visibility_of_any_elements_located((By.XPATH, "//div[@class='router_desc']")))
+            right_list_base = self.rp.wx_investor_power_list(role)
+            right_list = right_list_base.copy()
+            lists = []
+            for i in names:
+                a = i.text
+                lists.append(a)
+            if right_list == lists:
+                print('所有权限:', role + "权限正确", right_list)
+            else:
+                print('所有权限:', role + "权限错误", '\n', right_list, '\n', lists)
+            # self.rp.wx_logout()
+
+    @unittest.skip('不执行')
+    # 出资人权限-无提现权限-目前写死权限不受提现影响
+    # 【管理员】机柜管理，订单管理，收益统计，提现，数据概况，数据分析，设置
+    def test_012(self):
+        url = 'http://debug2.wegui.cn/v1/users/MCenqjtx4R'
+        headers = {"Content-Type": "application/json",
+                   "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
+                   "Xi-Session-Token": "r:8ceacf261f6da1b17ecbbb2b86db29d0"}
+        role_list = ['main']
+        for role in role_list:
+            # 布尔值 web（后台登陆）,wxadmin（微信管理端），withdraw（提现）
+            data = self.rp.wx_investor_power(role, True, True, False)
+            requests.put(url, data=data, headers=headers)
+            self.driver.implicitly_wait(30)
+            self.rp.open_url("http://wxadmin.wegui.cn/admin/#/")
+            self.rp.wx_login('xd153', 'abc123')
+            names = WebDriverWait(self.driver, 20).until(
+                EC.visibility_of_any_elements_located((By.XPATH, "//div[@class='router_desc']")))
+            right_list_base = self.rp.wx_investor_power_list(role)
+            right_list = right_list_base.copy()
+            if '提现' in right_list:
+                right_list.remove('提现')
+                lists = []
+                for i in names:
+                    a = i.text
+                    lists.append(a)
+                if right_list == lists:
+                    print('关闭数据统计权限:', role + "权限正确", right_list)
+                else:
+                    print('关闭数据统计权限:', role + "权限错误", '\n', right_list, '\n', lists)
+                self.rp.wx_logout()
 
     @unittest.skip('不执行')
     # 区域经理权限
@@ -297,7 +349,7 @@ class TestReserveTable(unittest.TestCase):
     # 【财务员】
     # 【总营收管理员】
     # 【分成管理员】
-    def test_012(self):
+    def test_013(self):
         pass
 
 
