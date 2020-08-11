@@ -2,51 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b1f419d-1528-4f8b-8bb1-249562769f98" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/Base/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/Base/runmethod.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/alltestcase/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/alltestcase/login.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/asgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/data/Dict.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/data/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/data/data_config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/data/dependent_data.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/data/dependent_data_json.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/data/get_data.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/dataconfig/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/dataconfig/api.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/dataconfig/interfacebar1.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/dataconfig/loginjson.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/dataconfig/payrule.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/dataconfig/table.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/main/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/main/demo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/main/material.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/main/run_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/main/run_test_new.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/util/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/util/common_util.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/util/data_report.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/util/operation_excel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/util/operation_json.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/util/read_ini.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/util/send_email.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/xironbackend/wsgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/base/find_element.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/base/find_element.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/business/register_business.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/business/register_business.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/main/run_test_new.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/main/run_test_new.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/case/contract_approve.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/case/contract_approve.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/case/contract_m_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/case/contract_m_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/case/contract_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/case/contract_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/case/run_case.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/case/run_case.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/handle/register_handle.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/handle/register_handle.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/page/element_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/page/element_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/page/register_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/page/register_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/register_function.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/register_function.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,21 +14,27 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/util/operation_json.py">
+        <entry file="file://$PROJECT_DIR$/ui/case/contract_m_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+            <state relative-caret-position="27">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
+              <folding>
+                <element signature="e#0#47#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/api/util/read_ini.py">
+        <entry file="file://$PROJECT_DIR$/ui/case/contract_approve.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
+            <state relative-caret-position="-7941">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+              <folding>
+                <element signature="e#24#54#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -93,21 +58,21 @@
         <option value="$PROJECT_DIR$/api/util/common_util.py" />
         <option value="$PROJECT_DIR$/ui/base/find_element.py" />
         <option value="$PROJECT_DIR$/ui/business/register_business.py" />
-        <option value="$PROJECT_DIR$/ui/case/contract_approve.py" />
         <option value="$PROJECT_DIR$/ui/case/contract_m_test.py" />
         <option value="$PROJECT_DIR$/ui/case/contract_test.py" />
         <option value="$PROJECT_DIR$/ui/case/run_case.py" />
         <option value="$PROJECT_DIR$/ui/handle/register_handle.py" />
-        <option value="$PROJECT_DIR$/ui/page/element_page.py" />
         <option value="$PROJECT_DIR$/ui/page/register_page.py" />
         <option value="$PROJECT_DIR$/ui/register_function.py" />
         <option value="$PROJECT_DIR$/api/data/data_config.py" />
         <option value="$PROJECT_DIR$/api/data/dependent_data.py" />
         <option value="$PROJECT_DIR$/api/data/dependent_data_json.py" />
-        <option value="$PROJECT_DIR$/api/main/run_test_new.py" />
         <option value="$PROJECT_DIR$/api/util/operation_excel.py" />
         <option value="$PROJECT_DIR$/api/util/operation_json.py" />
         <option value="$PROJECT_DIR$/api/util/read_ini.py" />
+        <option value="$PROJECT_DIR$/api/main/run_test_new.py" />
+        <option value="$PROJECT_DIR$/ui/page/element_page.py" />
+        <option value="$PROJECT_DIR$/ui/case/contract_approve.py" />
       </list>
     </option>
   </component>
@@ -134,6 +99,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -150,25 +116,7 @@
               <item name="auto-test" type="b2602c69:ProjectViewProjectNode" />
               <item name="auto-test" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="Base" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="auto-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="auto-test" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="auto-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="auto-test" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="auto-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="auto-test" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="auto-test" type="b2602c69:ProjectViewProjectNode" />
@@ -191,18 +139,24 @@
               <item name="auto-test" type="b2602c69:ProjectViewProjectNode" />
               <item name="auto-test" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
+              <item name="case" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="auto-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="auto-test" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../xtcontract" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -216,6 +170,28 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="Nosetests for contract_approve.TestReserveTable" type="tests" factoryName="Nosetests" temporary="true" nameIsGenerated="true">
+      <module name="auto-test" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ui/case" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_regexPattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;contract_approve.TestReserveTable&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Nosetests for contract_approve.TestReserveTable" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -227,32 +203,52 @@
       <option name="presentableId" value="Default" />
       <updated>1596592018286</updated>
     </task>
+    <task id="LOCAL-00001" summary="调整层级，删除了多余文件">
+      <created>1596594360288</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1596594360288</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="Nosetests_for_contract_approve_TestReserveTable - 2020.08.06 at 14h 44m 55s.xml">
+      <configuration name="Nosetests for contract_approve.TestReserveTable" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Nosetests_for_contract_approve_TestReserveTable - 2020.08.06 at 14h 47m 10s.xml">
+      <configuration name="Nosetests for contract_approve.TestReserveTable" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17857143" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18017058" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.23101953" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="R Packages" />
-      <window_info anchor="right" id="R Graphics" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="R Graphics" order="3" />
+      <window_info anchor="right" id="R Packages" order="4" />
     </layout>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="调整层级，删除了多余文件" />
+    <option name="LAST_COMMIT_MESSAGE" value="调整层级，删除了多余文件" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/api/dataconfig/loginjson.json">
@@ -264,40 +260,6 @@
     <entry file="file://$PROJECT_DIR$/api/dataconfig/table.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/util/send_email.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="18" column="31" lean-forward="true" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/business/register_business.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/case/contract_approve.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="43" lean-forward="true" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/case/contract_m_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ui/case/contract_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
@@ -305,13 +267,6 @@
           <folding>
             <element signature="e#24#67#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/case/run_case.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -337,13 +292,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/page/element_page.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ui/page/register_page.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="27">
@@ -356,13 +304,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ui/util/DriverInit.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/base/find_element.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1" column="5" lean-forward="true" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="8" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ui/start_browser.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -394,21 +335,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/alltestcase/login.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-          <folding>
-            <element signature="e#24#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/Base/runmethod.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-721" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/api/alltestcase/login.py" />
     <entry file="file://$PROJECT_DIR$/api/data/data_config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1196">
@@ -468,13 +395,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/main/run_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="11" lean-forward="true" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/util/common_util.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -485,25 +405,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/util/data_report.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-486">
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/main/run_test_new.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="15" column="51" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="51" />
-          <folding>
-            <element signature="e#24#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/api/util/data_report.py" />
     <entry file="file://$PROJECT_DIR$/api/util/operation_excel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
@@ -514,6 +416,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/api/util/read_ini.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/util/operation_json.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -521,10 +430,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/util/read_ini.py">
+    <entry file="file://$PROJECT_DIR$/api/util/send_email.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
+        <state relative-caret-position="243">
+          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/Base/runmethod.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/main/run_test_new.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="87" column="59" selection-start-line="87" selection-start-column="59" selection-end-line="87" selection-end-column="59" />
+          <folding>
+            <element signature="e#24#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/page/element_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#23#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/business/register_business.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="35">
+          <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
+          <folding>
+            <element signature="e#25#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/base/find_element.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+          <folding>
+            <element signature="e#24#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/case/run_case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4714">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/main/run_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-945">
+          <caret line="7" column="11" lean-forward="true" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/case/contract_m_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/case/contract_approve.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7941">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="e#24#54#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

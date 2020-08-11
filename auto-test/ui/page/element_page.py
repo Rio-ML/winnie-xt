@@ -34,6 +34,22 @@ class RegisterPage(object):
         self.register_h.input("//input[@placeholder='请输入密码']", password)
         self.register_h.click("//span[text()='确定']")
 
+    # 返回session_token
+    def login_session_token(self, user, password):
+        url = 'http://debug2.wegui.cn/v1/auth/login'
+        headers = {"Content-Type": "application/json",
+                   "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70"}
+        data = {"username": user, "password": password, "code": "", "uuid": "92218c6d-56c9-42d5-a078-a78f5da925bd"}
+        res = requests.post(url, data=json.dumps(data), headers=headers)
+        return res.json()['sessionToken']
+
+    def web_headers(self):
+        headers = {"Content-Type": "application/json",
+                   "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
+                   "Xi-Session-Token": RegisterPage.login_session_token(self, 'xiaodwx', '123456')}
+        return headers
+
+
     # 各种按钮
     def wx_button(self, a_button):
         class_map = {
@@ -194,6 +210,17 @@ class RegisterPage(object):
         }
         return class_map[power_list]
 
+    # 微信管理端 合作商各种权限对应的权限模块
+    def wx_investor_power_list(self, power_list):
+        class_map = {
+            "main": ['机柜管理', '订单管理', '收益记录', '提现', '数据分析', '数据概括', '设置'],
+            "operator": ['机柜管理', '订单管理', '收益记录', '提现', '数据分析', '数据概括', '设置'],
+            "accountant": ['机柜管理', '订单管理', '收益记录', '提现', '数据分析', '数据概括', '设置'],
+            "partner": ['机柜管理', '订单管理', '收益记录', '提现', '数据分析', '数据概括', '设置'],
+            "regulator": ['机柜管理', '订单管理', '收益记录', '提现', '数据分析', '数据概括', '设置']
+        }
+        return class_map[power_list]
+
     # 微信管理端 商户各种权限设置
     def wx_shop_power(self, role, web, wxadmin, withdraw, quickManage, orderNRecord, baseCount):
         data = '{"username":"shop","roleType":"operator","gender":"male","phone":"asd","remark":"","nickname":"sad","status":"normal",' \
@@ -216,6 +243,20 @@ class RegisterPage(object):
         data = '{"username":"xd05","roleType":"main","gender":"male","phone":"111111","remark":"","nickname":"11111111","status":"normal",' \
                '"passport":{"web":true,"wxadmin":true,"withdraw":true},' \
                '"managerRole":{"__type":"Pointer","className":"ManagerRole","objectId":"vlPSXU5EM3"}}'
+        list = {'main': 'vlPSXU5EM3', 'operator': 'G6manc1tnY', 'accountant': 'tKTfO0KLu5', 'partner': 'phmyTlJNle', 'regulator': 'AtfQDan6NH'}
+        data_obj = json.loads(data)
+        data_obj['roleType'] = role
+        data_obj['passport']['web'] = web
+        data_obj['passport']['wxadmin'] = wxadmin
+        data_obj['passport']['withdraw'] = withdraw
+        data_obj['managerRole']['objectId'] = list[role]
+        return json.dumps(data_obj)
+
+    # 微信管理端 出资人各种权限设置
+    def wx_investor_power(self, role, web, wxadmin, withdraw):
+        data = '{"username":"xd153","roleType":"main","gender":"male","phone":"22222222","remark":"","nickname":"2222","status":"normal",' \
+               '"passport":{"web":true,"wxadmin":true,"withdraw":false},' \
+               '"managerRole":{"__type":"Pointer","className":"ManagerRole","objectId":"G6manc1tnY"}}'
         list = {'main': 'vlPSXU5EM3', 'operator': 'G6manc1tnY', 'accountant': 'tKTfO0KLu5', 'partner': 'phmyTlJNle', 'regulator': 'AtfQDan6NH'}
         data_obj = json.loads(data)
         data_obj['roleType'] = role
@@ -249,4 +290,6 @@ class RegisterPage(object):
             "regulator_close_baseCount": [True, True, True, True, True, False],
         }
         return class_map
+
+
 

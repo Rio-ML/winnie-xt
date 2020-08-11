@@ -86,7 +86,7 @@ class RunTest(unittest.TestCase):
         print("本次接口自动化测试运行用例总数：", self.statistic.total_count)
         print("本次接口自动化测试通过用例数：", self.statistic.success_count)
         print("本次接口自动化测试失败用例数：", self.statistic.fail_count)
-
+        # 发送邮件
         # self.send_mai.send_main(success_count, self.statistic.fail_count)
 
 
