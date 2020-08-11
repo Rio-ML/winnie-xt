@@ -4,6 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 import json
+import requests
 from util.DriverInit import DriverInit
 from handle.get_utils import ActionUtil
 
@@ -33,6 +34,22 @@ class RegisterPage(object):
         self.register_h.input("//input[@placeholder='登陆账号']", username)
         self.register_h.input("//input[@placeholder='请输入密码']", password)
         self.register_h.click("//span[text()='确定']")
+
+    # 返回session_token
+    def login_session_token(self, user, password):
+        url = 'http://debug2.wegui.cn/v1/auth/login'
+        headers = {"Content-Type": "application/json",
+                   "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70"}
+        data = {"username": user, "password": password, "code": "", "uuid": "92218c6d-56c9-42d5-a078-a78f5da925bd"}
+        res = requests.post(url, data=json.dumps(data), headers=headers)
+        return res.json()['sessionToken']
+
+    def web_headers(self):
+        headers = {"Content-Type": "application/json",
+                   "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
+                   "Xi-Session-Token": RegisterPage.login_session_token(self, 'xiaodwx', '123456')}
+        return headers
+
 
     # 各种按钮
     def wx_button(self, a_button):

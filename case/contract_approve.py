@@ -93,7 +93,7 @@ class TestReserveTable(unittest.TestCase):
         print(lists[0].split('\n'))
         print(len(lists[0].split('\n')))
 
-    @unittest.skip('不执行')
+    # @unittest.skip('不执行')
     # 商户权限
     # 【main管理员】快捷管理（配置），机柜管理，订单管理，收益记录，数据统计（配置），兑换统计（写死xd1），提现（配置），设置
     # 【operator运维员】快捷管理（配置），机柜管理，订单管理，设置
@@ -102,13 +102,10 @@ class TestReserveTable(unittest.TestCase):
     # 【regulator分成管理员】快捷管理（配置），机柜管理，收益记录，提现（配置），设置
     def test_005(self):
         url = 'http://debug2.wegui.cn/v1/users/hYerDH4nHm'
-        headers = {"Content-Type": "application/json",
-                   "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
-                   "Xi-Session-Token": "r:8ceacf261f6da1b17ecbbb2b86db29d0"}
         role_list = ['main', 'operator', 'accountant', 'partner', 'regulator']
         for role in role_list:
             data = self.rp.wx_shop_power(role, True, True, True, True, True, True)
-            requests.put(url, data=data, headers=headers)
+            requests.put(url, data=data, headers=self.rp.web_headers())
             self.driver.implicitly_wait(30)
             self.rp.open_url("http://wxadmin.wegui.cn/admin/#/")
             self.rp.wx_login('shop', 'abc123')
@@ -130,13 +127,10 @@ class TestReserveTable(unittest.TestCase):
     # 商户权限-无提现模块
     def test_006(self):
         url = 'http://debug2.wegui.cn/v1/users/hYerDH4nHm'
-        headers = {"Content-Type": "application/json",
-                   "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
-                   "Xi-Session-Token": "r:8ceacf261f6da1b17ecbbb2b86db29d0"}
         role_list = ['main', 'operator', 'accountant', 'partner', 'regulator']
         for role in role_list:
             data = self.rp.wx_shop_power(role, True, True, False, True, True, True)
-            requests.put(url, data=data, headers=headers)
+            requests.put(url, data=data, headers=self.rp.web_headers())
             self.driver.implicitly_wait(30)
             self.rp.open_url("http://wxadmin.wegui.cn/admin/#/")
             self.rp.wx_login('shop', 'abc123')
@@ -160,13 +154,10 @@ class TestReserveTable(unittest.TestCase):
     # 商户权限-无快捷管理权限
     def test_007(self):
         url = 'http://debug2.wegui.cn/v1/users/hYerDH4nHm'
-        headers = {"Content-Type": "application/json",
-                   "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
-                   "Xi-Session-Token": "r:8ceacf261f6da1b17ecbbb2b86db29d0"}
         role_list = ['main', 'operator', 'accountant', 'partner', 'regulator']
         for role in role_list:
             data = self.rp.wx_shop_power(role, True, True, True, False, True, True)
-            requests.put(url, data=data, headers=headers)
+            requests.put(url, data=data, headers=self.rp.web_headers())
             self.driver.implicitly_wait(30)
             self.rp.open_url("http://wxadmin.wegui.cn/admin/#/")
             self.rp.wx_login('shop', 'abc123')
@@ -189,13 +180,10 @@ class TestReserveTable(unittest.TestCase):
     # 商户权限-无商户基础报告权限，数据统计
     def test_008(self):
         url = 'http://debug2.wegui.cn/v1/users/hYerDH4nHm'
-        headers = {"Content-Type": "application/json",
-                   "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
-                   "Xi-Session-Token": "r:8ceacf261f6da1b17ecbbb2b86db29d0"}
         role_list = ['main', 'operator', 'accountant', 'partner', 'regulator']
         for role in role_list:
             data = self.rp.wx_shop_power(role, True, True, True, True, True, False)
-            requests.put(url, data=data, headers=headers)
+            requests.put(url, data=data, headers=self.rp.web_headers())
             self.driver.implicitly_wait(30)
             self.rp.open_url("http://wxadmin.wegui.cn/admin/#/")
             self.rp.wx_login('shop', 'abc123')
@@ -224,14 +212,11 @@ class TestReserveTable(unittest.TestCase):
     # 【分成管理员】机柜管理，审批，收益记录，提现（配置），设置
     def test_009(self):
         url = 'http://debug2.wegui.cn/v1/users/TnSFqkLR9D'
-        headers = {"Content-Type": "application/json",
-                   "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
-                   "Xi-Session-Token": "r:8ceacf261f6da1b17ecbbb2b86db29d0"}
         role_list = ['main', 'operator', 'accountant', 'partner', 'regulator']
         for role in role_list:
             # 布尔值 web（后台登陆）,wxadmin（微信管理端），withdraw（提现）
             data = self.rp.wx_agent_power(role, True, True, True)
-            requests.put(url, data=data, headers=headers)
+            requests.put(url, data=data, headers=self.rp.web_headers())
             self.driver.implicitly_wait(30)
             self.rp.open_url("http://wxadmin.wegui.cn/admin/#/")
             self.rp.wx_login('xd05', 'abc123')
@@ -253,14 +238,11 @@ class TestReserveTable(unittest.TestCase):
     # 合作商权限-无提现权限
     def test_010(self):
         url = 'http://debug2.wegui.cn/v1/users/TnSFqkLR9D'
-        headers = {"Content-Type": "application/json",
-                   "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
-                   "Xi-Session-Token": "r:8ceacf261f6da1b17ecbbb2b86db29d0"}
         role_list = ['main', 'operator', 'accountant', 'partner', 'regulator']
         for role in role_list:
             # 布尔值 web（后台登陆）,wxadmin（微信管理端），withdraw（提现）
             data = self.rp.wx_agent_power(role, True, True, False)
-            requests.put(url, data=data, headers=headers)
+            requests.put(url, data=data, headers=self.rp.web_headers())
             self.driver.implicitly_wait(30)
             self.rp.open_url("http://wxadmin.wegui.cn/admin/#/")
             self.rp.wx_login('xd05', 'abc123')
@@ -285,14 +267,11 @@ class TestReserveTable(unittest.TestCase):
     # 【管理员】机柜管理，订单管理，收益统计，提现，数据概况，数据分析，设置
     def test_011(self):
         url = 'http://debug2.wegui.cn/v1/users/MCenqjtx4R'
-        headers = {"Content-Type": "application/json",
-                   "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
-                   "Xi-Session-Token": "r:8ceacf261f6da1b17ecbbb2b86db29d0"}
         role_list = ['main']
         for role in role_list:
             # 布尔值 web（后台登陆）,wxadmin（微信管理端），withdraw（提现）
             data = self.rp.wx_investor_power(role, True, True, True)
-            requests.put(url, data=data, headers=headers)
+            requests.put(url, data=data, headers=self.rp.web_headers())
             self.driver.implicitly_wait(30)
             self.rp.open_url("http://wxadmin.wegui.cn/admin/#/")
             self.rp.wx_login('xd153', 'abc123')
@@ -315,14 +294,11 @@ class TestReserveTable(unittest.TestCase):
     # 【管理员】机柜管理，订单管理，收益统计，提现，数据概况，数据分析，设置
     def test_012(self):
         url = 'http://debug2.wegui.cn/v1/users/MCenqjtx4R'
-        headers = {"Content-Type": "application/json",
-                   "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
-                   "Xi-Session-Token": "r:8ceacf261f6da1b17ecbbb2b86db29d0"}
         role_list = ['main']
         for role in role_list:
             # 布尔值 web（后台登陆）,wxadmin（微信管理端），withdraw（提现）
             data = self.rp.wx_investor_power(role, True, True, False)
-            requests.put(url, data=data, headers=headers)
+            requests.put(url, data=data, headers=self.rp.web_headers())
             self.driver.implicitly_wait(30)
             self.rp.open_url("http://wxadmin.wegui.cn/admin/#/")
             self.rp.wx_login('xd153', 'abc123')
