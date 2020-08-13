@@ -77,10 +77,12 @@ class RegisterPage(object):
         assert a_button in class_map
         self.register_h.click(class_map[a_button])
 
-    def web_tab(self, a_tab):
+    def web_tab(self, a_tab, contract_num=None):
+        if contract_num is None:
+            contract_num = ''
         class_map = {
             "已通过": "//a[text()='已通过']",
-            "查看": "(//div[text()='合同测试1121']/parent::*/parent::*/td/div/button/span[contains(text(),'查看')]/parent::*)[2]"
+            "查看": "(//div[text()='" + contract_num + "']/parent::*/parent::*/td/div/button/span[contains(text(),'查看')]/parent::*)[2]"
         }
         assert a_tab in class_map
         self.register_h.click(class_map[a_tab])
@@ -123,12 +125,12 @@ class RegisterPage(object):
         assert location_box in class_map
         self.register_h.input(class_map[location_box], value)
 
-    def web_get_text(self, get_text):
+    def web_get_text(self, get_web_text):
         class_map = {
             "营业时间": "//div[text()='营业时间：']/following-sibling::*"
         }
-        assert get_text in class_map
-        self.register_h.get_attribute(class_map[get_text], '00:00~07:00')
+        assert get_web_text in class_map
+        self.register_h.find_ele(class_map[get_web_text])
 
     # 各种下拉框选择
     def drop_down_box(self, loc_select, value):

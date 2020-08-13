@@ -17,9 +17,13 @@ class ActionUtil(object):
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.XPATH, xpath))).clear()
 
     def get_text(self, xpath):
-        check_text = WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.XPATH, xpath)))
-        return check_text.text
+        check_text = WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.XPATH, xpath))).text
+        return check_text
 
     def get_attribute(self, xpath, text):
         text_bool = WebDriverWait(self.driver, 20).until(EC.text_to_be_present_in_element((By.XPATH, xpath), text))
         return text_bool
+
+    def find_ele(self, xpath):
+        ele = WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.XPATH, xpath)))
+        return ele
