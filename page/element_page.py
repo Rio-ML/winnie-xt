@@ -35,21 +35,6 @@ class RegisterPage(object):
         self.register_h.input("//input[@placeholder='请输入密码']", password)
         self.register_h.click("//span[text()='确定']")
 
-    # 返回session_token
-    def login_session_token(self, user, password):
-        url = 'http://debug2.wegui.cn/v1/auth/login'
-        headers = {"Content-Type": "application/json",
-                   "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70"}
-        data = {"username": user, "password": password, "code": "", "uuid": "92218c6d-56c9-42d5-a078-a78f5da925bd"}
-        res = requests.post(url, data=json.dumps(data), headers=headers)
-        return res.json()['sessionToken']
-
-    def web_headers(self):
-        headers = {"Content-Type": "application/json",
-                   "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
-                   "Xi-Session-Token": RegisterPage.login_session_token(self, 'xiaodwx', '123456')}
-        return headers
-
 
     # 各种按钮
     def wx_button(self, a_button):
@@ -92,6 +77,14 @@ class RegisterPage(object):
         assert a_button in class_map
         self.register_h.click(class_map[a_button])
 
+    def web_tab(self, a_tab):
+        class_map = {
+            "已通过": "//a[text()='已通过']",
+            "查看": "(//div[text()='合同测试1121']/parent::*/parent::*/td/div/button/span[contains(text(),'查看')]/parent::*)[2]"
+        }
+        assert a_tab in class_map
+        self.register_h.click(class_map[a_tab])
+
     # 各种输入框
     def wx_input_text(self, location_box, value):
         class_map = {
@@ -129,6 +122,13 @@ class RegisterPage(object):
         }
         assert location_box in class_map
         self.register_h.input(class_map[location_box], value)
+
+    def web_get_text(self, get_text):
+        class_map = {
+            "营业时间": "//div[text()='营业时间：']/following-sibling::*"
+        }
+        assert get_text in class_map
+        self.register_h.get_attribute(class_map[get_text], '00:00~07:00')
 
     # 各种下拉框选择
     def drop_down_box(self, loc_select, value):
@@ -292,3 +292,19 @@ class RegisterPage(object):
         }
         return class_map
 
+
+class SessionToken(object):
+    # 返回session_token
+    def login_session_token(self, user, password):
+        url = 'http://debug2.wegui.cn/v1/auth/login'
+        headers = {"Content-Type": "application/json",
+                   "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70"}
+        data = {"username": user, "password": password, "code": "", "uuid": "92218c6d-56c9-42d5-a078-a78f5da925bd"}
+        res = requests.post(url, data=json.dumps(data), headers=headers)
+        return res.json()['sessionToken']
+
+    def web_headers(self):
+        headers = {"Content-Type": "application/json",
+                   "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
+                   "Xi-Session-Token": SessionToken.login_session_token(self, 'xiaodwx', '123456')}
+        return headers
