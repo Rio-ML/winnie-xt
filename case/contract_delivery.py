@@ -20,7 +20,7 @@ from page.element_page import SessionToken
 token = SessionToken()
 driver = DriverInit().driver
 rp = RegisterPage(driver)
-contract_num = "合同审批081313"
+contract_num = "合同审批081315"
 def create_contract_approve(token, contract_num):
     # 创建一个审批合同，xiaodwx申请及审批
     url_contracts = 'http://debug2.wegui.cn/v1/contracts'
@@ -64,7 +64,7 @@ def create_contract_approve(token, contract_num):
     # 将审批申请放到待我审批
     url_agree_conrtract = 'http://debug2.wegui.cn/v1/contracts/' + res_get_oj.json()['objectId']
     data_agree_conrtract = {}
-    res_agree_conrtract = requests.put(url_agree_conrtract, data=json.dumps(data_agree_conrtract), headers=token.web_headers())
+    requests.put(url_agree_conrtract, data=json.dumps(data_agree_conrtract), headers=token.web_headers())
     # 获取 待我审批 列表的第一个
     url_get_contracts_oj = 'http://debug2.wegui.cn/v1/approvalStages?limit=100&skip=0&order=-status,-createdAt&include=approval.originator.platform,approval.originator.agent,approval.originator.shop,approval.originator.site,approval.contract,approval.logistics&where=%7B%22status%22:%22pending%22,%22approval%22:%7B%22$inQuery%22:%7B%22where%22:%7B%22operator%22:%7B%22$inQuery%22:%7B%22where%22:%7B%22type%22:%7B%22$in%22:[%22platform%22,%22agent%22]%7D,%22objectId%22:%22lCYuzNNBmD%22%7D,%22className%22:%22_User%22%7D%7D,%22status%22:%7B%22$in%22:[%22pending%22,%22processing%22]%7D%7D,%22className%22:%22Approval%22%7D%7D,%22operator%22:%7B%22$inQuery%22:%7B%22where%22:%7B%22type%22:%7B%22$in%22:[%22platform%22,%22agent%22]%7D,%22objectId%22:%22lCYuzNNBmD%22%7D,%22className%22:%22_User%22%7D%7D%7D'
     res_get_contracts_oj = requests.get(url_get_contracts_oj, headers=token.web_headers())
@@ -91,7 +91,7 @@ def test_003(rp):
     rp.web_tab("查看", contract_num)
     percent = WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH, "//div[text()='分成比例：']/following-sibling::*"))).text
     cab_num = WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH, "//div[text()='柜组总数：']/following-sibling::*"))).text
-    discount = WebDriverWait(driver, 20).until( EC.visibility_of_element_located((By.XPATH, "//div[text()='需扣费用：']/following-sibling::*"))).text
+    discount = WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH, "//div[text()='需扣费用：']/following-sibling::*"))).text
     test_result.append(percent)
     test_result.append(cab_num)
     test_result.append(discount)
