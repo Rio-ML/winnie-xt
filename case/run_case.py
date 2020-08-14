@@ -201,10 +201,19 @@ from pytesseract.pytesseract import image_to_string
 # print(json.dumps(data_obj))
 
 
-list = ['tt', 'aa', 'bb']
-if 'ee' in list:
-    list.remove('ee')
-    print(list)
+# list = ['tt', 'aa', 'bb']
+# if 'ee' in list:
+#     list.remove('ee')
+#     print(list)
+# else:
+#     # list.remove('ee')
+#     print(list)
+#
+# a =  '2020-08-14 14:21:56'
+# print(a[0:10])
+a = ['已通过', 'xd1645', '测试自动化合同审批和发货申请', '2020-08-14', '定制贴纸\n定制雨棚\n标准柜  1主3副', '平台：50\n商户：30\n其它：20', '5', '合同审批081405', '观光景区', '影视城', '河北省秦皇岛市山海关区', 'dxs', '188888888888', '这里是备注']
+b = ['已通过', 'xd1645', '测试自动化合同审批和发货申请', '2020-08-14', '定制贴纸\n定制雨棚\n标准柜  1主3副', '平台：50\n商户：30\n其它：20', '5', '合同审批081405', '观光景区', '影视城', '河北省秦皇岛市山海关区', 'dxs', '188888888888', '这里是备注']
+if a == b:
+    print("通过")
 else:
-    # list.remove('ee')
-    print(list)
+    print("不通过")
