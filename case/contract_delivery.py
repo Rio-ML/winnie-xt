@@ -3,6 +3,7 @@ from selenium import webdriver
 from business.register_business import RegisterBusiness
 from page.element_page import RegisterPage
 from util.DriverInit import DriverInit
+from util.DriverExchange import DriverInitExchange
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
@@ -19,9 +20,11 @@ from page.element_page import SessionToken
 
 token = SessionToken()
 driver = DriverInit().driver
+# driver = DriverInitExchange().driver
 rp = RegisterPage(driver)
 contract_time = '2020-08-14'
 contract_num = "合同审批081408"
+
 def create_contract_approve(token, contract_num):
     # 创建一个审批合同，xiaodwx申请及审批
     url_contracts = 'http://debug2.wegui.cn/v1/contracts'
@@ -147,8 +150,13 @@ def create_contract_approve(token, contract_num):
 
 def wx_contract_comparison(rp):
     wx_test_result = []
+    DriverInitExchange.wx_driver(driver)
     driver.implicitly_wait(30)
-    rp.open_url("http://wxadmin.wegui.cn/admin/#/")
+    # rp.open_url("http://wxadmin.wegui.cn/admin/#/")
+    newwindow = 'window.open("http://wxadmin.wegui.cn/admin/#/")'
+    driver.execute_script(newwindow)
+    driver.switch_to_window(driver.window_handles[1])
+    DriverInitExchange.wx_driver(driver)
     rp.wx_login('xiaodwx', '123456')
     rp.open_xt_menu("合同审批(新)")
     WebDriverWait(driver, 20).until(
@@ -190,7 +198,7 @@ def wx_contract_comparison(rp):
 
 if __name__ == '__main__':
     # 创建一个合同审批并通过
-    create_contract_approve(token, contract_num)
+    # create_contract_approve(token, contract_num)
     # selenium取出后台管理合同的值
     # web_result = web_contract_comparison(rp)
     # 后台管理的预期结果
