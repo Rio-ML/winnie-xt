@@ -1,5 +1,6 @@
 import time
 from selenium import webdriver
+from selenium.webdriver import ActionChains
 from business.register_business import RegisterBusiness
 from page.element_page import RegisterPage
 from util.DriverInit import DriverInit
@@ -148,52 +149,107 @@ def create_contract_approve(token, contract_num):
 #     return web_test_result
 
 
-def wx_contract_comparison(rp):
-    wx_test_result = []
-    DriverInitExchange.wx_driver(driver)
+# def wx_contract_comparison(rp):
+#     wx_test_result = []
+#     driver.implicitly_wait(30)
+#     # DriverInitExchange.wx_driver(driver)
+#     rp.open_url("http://wxadmin.wegui.cn/admin/#/")
+#     # newwindow = 'window.open("http://wxadmin.wegui.cn/admin/#/")'
+#     # driver.execute_script(newwindow)
+#     # driver.switch_to_window(driver.window_handles[1])
+#     rp.wx_login('xiaodwx', '123456')
+#     rp.open_xt_menu("合同审批(新)")
+#     WebDriverWait(driver, 20).until(
+#         EC.visibility_of_element_located((By.XPATH, "//span[text()='" + contract_num + "']"))).click()
+#     status = WebDriverWait(driver, 20).until(
+#         EC.visibility_of_element_located((By.XPATH, "//div[@class='one done']/span"))).text
+#     apply_name = WebDriverWait(driver, 20).until(
+#         EC.visibility_of_element_located((By.XPATH, "//div[text()='申请人']/following-sibling::*"))).text
+#     wx_cor = WebDriverWait(driver, 20).until(
+#         EC.visibility_of_element_located((By.XPATH, "//div[text()='所属组织']/following-sibling::*"))).text
+#     apply_time = WebDriverWait(driver, 20).until(
+#         EC.visibility_of_element_located((By.XPATH, "//div[text()='申请时间']/following-sibling::*"))).text
+#     cab_num = WebDriverWait(driver, 20).until(
+#         EC.visibility_of_element_located((By.XPATH, "//div[text()='柜组数量']/following-sibling::*"))).text
+#     percent = WebDriverWait(driver, 20).until(
+#         EC.visibility_of_element_located((By.XPATH, "//div[text()='分成比例']/following-sibling::*"))).text
+#     payrule = WebDriverWait(driver, 20).until(
+#         EC.visibility_of_element_located((By.XPATH, "//div[text()='支付规则']/following-sibling::*"))).text
+#     site_name = WebDriverWait(driver, 20).until(
+#         EC.visibility_of_element_located((By.XPATH, "//div[text()='网点名称']/following-sibling::*"))).text
+#     scene_type = WebDriverWait(driver, 20).until(
+#         EC.visibility_of_element_located((By.XPATH, "//div[text()='场景分类']/following-sibling::*"))).text
+#     site_type = WebDriverWait(driver, 20).until(
+#         EC.visibility_of_element_located((By.XPATH, "//div[text()='网点类型']/following-sibling::*"))).text
+#     add = WebDriverWait(driver, 20).until(
+#         EC.visibility_of_element_located((By.XPATH, "//div[text()='详细地址']/following-sibling::*"))).text
+#     contact_name = WebDriverWait(driver, 20).until(
+#         EC.visibility_of_element_located((By.XPATH, "//div[text()='联系人']/following-sibling::*"))).text
+#     contact_num = WebDriverWait(driver, 20).until(
+#         EC.visibility_of_element_located((By.XPATH, "//div[text()='联系电话']/following-sibling::*"))).text
+#     os = WebDriverWait(driver, 20).until(
+#         EC.visibility_of_element_located((By.XPATH, "//div[text()='备注']/following-sibling::*"))).text
+#     wx_test_result.extend([status, apply_name, wx_cor, apply_time[0:10], cab_num, percent, payrule, site_name,
+#                             scene_type, site_type, add, contact_name, contact_num, os])
+#     driver.close()
+#     print(wx_test_result)
+#     return wx_test_result
+
+
+# bug:平台，合作商权限 保存后再添加编辑里面的数字会保存错误
+def bug_001(rp):
+    web_bug_test_result = []
     driver.implicitly_wait(30)
-    # rp.open_url("http://wxadmin.wegui.cn/admin/#/")
-    newwindow = 'window.open("http://wxadmin.wegui.cn/admin/#/")'
-    driver.execute_script(newwindow)
-    driver.switch_to_window(driver.window_handles[1])
-    DriverInitExchange.wx_driver(driver)
-    rp.wx_login('xiaodwx', '123456')
-    rp.open_xt_menu("合同审批(新)")
-    WebDriverWait(driver, 20).until(
-        EC.visibility_of_element_located((By.XPATH, "//span[text()='" + contract_num + "']"))).click()
-    status = WebDriverWait(driver, 20).until(
-        EC.visibility_of_element_located((By.XPATH, "//div[@class='one done']/span"))).text
-    apply_name = WebDriverWait(driver, 20).until(
-        EC.visibility_of_element_located((By.XPATH, "//div[text()='申请人']/following-sibling::*"))).text
-    wx_cor = WebDriverWait(driver, 20).until(
-        EC.visibility_of_element_located((By.XPATH, "//div[text()='所属组织']/following-sibling::*"))).text
-    apply_time = WebDriverWait(driver, 20).until(
-        EC.visibility_of_element_located((By.XPATH, "//div[text()='申请时间']/following-sibling::*"))).text
-    cab_num = WebDriverWait(driver, 20).until(
-        EC.visibility_of_element_located((By.XPATH, "//div[text()='柜组数量']/following-sibling::*"))).text
-    percent = WebDriverWait(driver, 20).until(
-        EC.visibility_of_element_located((By.XPATH, "//div[text()='分成比例']/following-sibling::*"))).text
+    rp.open_url("http://admin.wegui.cn/#/login")
+    driver.maximize_window()
+    # rp.web_login('xd1645', 'abc123')
+    rp.web_login('xiaodwx', '123456')
+    rp.open_web_menu('运营管理')
+    rp.open_web_menu('合同审批（新）')
+    rp.web_button("添加合同")
+    # 移动到指定元素固定位置（指定元素在页面最下面）
+    location_ele = WebDriverWait(driver, 20).until(
+        EC.visibility_of_element_located((By.XPATH, "//label[contains(text(),'柜组总数')]/parent::*/div/div/input")))
+    ActionChains(driver).move_to_element(location_ele).perform()
+    rp.web_input_text("收费规则", "1.5")
+    rp.web_input_text("平台分成", "49.5")
+    rp.web_input_text("商户分成", "20.5")
+    rp.web_input_text("其它分成", "30")
+    rp.web_input_text("公司支付费用", "1200.25")
+    rp.web_button("需扣除运费-是")
+    rp.web_input_text("需扣除运费", "10.11")
+    rp.web_button("需扣除贴纸费用-是")
+    rp.web_input_text("需扣除贴纸费用", "20.22")
+    rp.web_button("人工费-是")
+    rp.web_input_text("人工费", "30.33")
+    driver.execute_script('document.documentElement.scrollTop=10000')
+    rp.web_button("保存")
+    rp.open_web_menu('合同审批（新）')
+    rp.web_button("添加合同")
+    rp.web_button("使用保存的合同申请")
+    location_ele = WebDriverWait(driver, 20).until(
+        EC.visibility_of_element_located((By.XPATH, "//label[contains(text(),'柜组总数')]/parent::*/div/div/input")))
+    ActionChains(driver).move_to_element(location_ele).perform()
     payrule = WebDriverWait(driver, 20).until(
-        EC.visibility_of_element_located((By.XPATH, "//div[text()='支付规则']/following-sibling::*"))).text
-    site_name = WebDriverWait(driver, 20).until(
-        EC.visibility_of_element_located((By.XPATH, "//div[text()='网点名称']/following-sibling::*"))).text
-    scene_type = WebDriverWait(driver, 20).until(
-        EC.visibility_of_element_located((By.XPATH, "//div[text()='场景分类']/following-sibling::*"))).text
-    site_type = WebDriverWait(driver, 20).until(
-        EC.visibility_of_element_located((By.XPATH, "//div[text()='网点类型']/following-sibling::*"))).text
-    add = WebDriverWait(driver, 20).until(
-        EC.visibility_of_element_located((By.XPATH, "//div[text()='详细地址']/following-sibling::*"))).text
-    contact_name = WebDriverWait(driver, 20).until(
-        EC.visibility_of_element_located((By.XPATH, "//div[text()='联系人']/following-sibling::*"))).text
-    contact_num = WebDriverWait(driver, 20).until(
-        EC.visibility_of_element_located((By.XPATH, "//div[text()='联系电话']/following-sibling::*"))).text
-    os = WebDriverWait(driver, 20).until(
-        EC.visibility_of_element_located((By.XPATH, "//div[text()='备注']/following-sibling::*"))).text
-    wx_test_result.extend([status, apply_name, wx_cor, apply_time[0:10], cab_num, percent, payrule, site_name,
-                            scene_type, site_type, add, contact_name, contact_num, os])
+        EC.visibility_of_element_located((By.XPATH, "//label[contains(text(),'收费规则')]/parent::*/div/div/input"))).get_attribute('value')
+    plat_percent = WebDriverWait(driver, 20).until(
+        EC.visibility_of_element_located((By.XPATH, "//label[contains(text(),'平台分成')]/parent::*/div/div/input"))).get_attribute('value')
+    shop_percent = WebDriverWait(driver, 20).until(
+        EC.visibility_of_element_located((By.XPATH, "//label[contains(text(),'商户分成')]/parent::*/div/div/input"))).get_attribute('value')
+    other_percent = WebDriverWait(driver, 20).until(
+        EC.visibility_of_element_located((By.XPATH, "//label[contains(text(),'其它分成')]/parent::*/div/div/input"))).get_attribute('value')
+    com_payrule = WebDriverWait(driver, 20).until(
+        EC.visibility_of_element_located((By.XPATH, "//label[contains(text(),'公司支付费用')]/parent::*/div/div/input"))).get_attribute('value')
+    freight = WebDriverWait(driver, 20).until(
+        EC.visibility_of_element_located((By.XPATH, "//label[contains(text(),'需扣除运费')]/parent::*/div/div/input"))).get_attribute('value')
+    sticker = WebDriverWait(driver, 20).until(
+        EC.visibility_of_element_located((By.XPATH, "//label[contains(text(),'需扣除贴纸费用')]/parent::*/div/div/input"))).get_attribute('value')
+    people_pay = WebDriverWait(driver, 20).until(
+        EC.visibility_of_element_located((By.XPATH, "//label[contains(text(),'人工费')]/parent::*/div/div/input"))).get_attribute('value')
+    web_bug_test_result.extend([payrule, plat_percent, shop_percent, other_percent, other_percent, com_payrule, freight, sticker, people_pay])
     driver.close()
-    print(wx_test_result)
-    return wx_test_result
+    print(web_bug_test_result)
+    return web_bug_test_result
 
 
 if __name__ == '__main__':
@@ -202,18 +258,21 @@ if __name__ == '__main__':
     # selenium取出后台管理合同的值
     # web_result = web_contract_comparison(rp)
     # 后台管理的预期结果
-    web_expect = [contract_num, '观光景区', '影视城', 'dxs/188888888888', '河北省秦皇岛市山海关区在这里', '00:02~07:12', '1', '2', '3', '4', '投放类', '5',
-     '平台：50，商户：30，20', '100', '需扣除运费金额：10.11，需扣除贴纸费用：20.22，需扣除人工费用：30.33', '室外', '海边', '黑色', '1主3副32门',
-     '定制贴纸（150/柜），定制雨棚（500/柜），脚杯，轮子', '这里是备注']
+    # web_expect = [contract_num, '观光景区', '影视城', 'dxs/188888888888', '河北省秦皇岛市山海关区在这里', '00:02~07:12', '1', '2', '3', '4', '投放类', '5',
+    #  '平台：50，商户：30，20', '100', '需扣除运费金额：10.11，需扣除贴纸费用：20.22，需扣除人工费用：30.33', '室外', '海边', '黑色', '1主3副32门',
+    #  '定制贴纸（150/柜），定制雨棚（500/柜），脚杯，轮子', '这里是备注']
     # selenium取出微信管理端合同的值
-    wx_result = wx_contract_comparison(rp)
+    # wx_result = wx_contract_comparison(rp)
+    # wx_expect = ['已通过', 'xd1645', '测试自动化合同审批和发货申请', contract_time, '定制贴纸\n定制雨棚\n标准柜  1主3副', '平台：50\n商户：30\n其它：20', '5', contract_num, '观光景区', '影视城', '河北省秦皇岛市山海关区', 'dxs', '188888888888', '这里是备注']
     # 微信管理端的预期结果
-    wx_expect = ['已通过', 'xd1645', '测试自动化合同审批和发货申请', contract_time, '定制贴纸\n定制雨棚\n标准柜  1主3副', '平台：50\n商户：30\n其它：20', '5', contract_num, '观光景区', '影视城', '河北省秦皇岛市山海关区', 'dxs', '188888888888', '这里是备注']
-    print(wx_expect)
-    if wx_result == wx_expect:
+    web_bug_result = bug_001(rp)
+    web_bug_expect = ['1.5', '49.5', '20.5', '30', '30', '1200.25', '10.11', '20.22', '30.33']
+    print(web_bug_expect)
+    if web_bug_result == web_bug_expect:
         print("通过")
     else:
         print("不通过")
+
 
 
 

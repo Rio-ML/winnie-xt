@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
+from util.DriverExchange import DriverInitExchange
 import json
 import requests
 from util.DriverInit import DriverInit
@@ -72,7 +73,13 @@ class RegisterPage(object):
             "状态": "//label[text()='状态']/following-sibling::*/div",
             "上架": "//span[text()='上架']",
             "下架": "//span[text()='下架']",
-            "添加优惠券-确定": "//div[@aria-label='添加优惠券']/div/div/button/span[text()='确 定']"
+            "添加优惠券-确定": "//div[@aria-label='添加优惠券']/div/div/button/span[text()='确 定']",
+            "添加合同": "//span[contains(text(),'添加合同')]",
+            "需扣除运费-是": "(//label[contains(text(),'需扣除运费')]/following-sibling::*/label)[1]",
+            "需扣除贴纸费用-是": "(//label[contains(text(),'需扣除贴纸费用')]/following-sibling::*/label)[1]",
+            "人工费-是": "(//label[contains(text(),'人工费')]/following-sibling::*/label)[1]",
+            "保存": "//span[contains(text(),'保 存')]",
+            "使用保存的合同申请": "//span[contains(text(),'是，继续')]"
         }
         assert a_button in class_map
         self.register_h.click(class_map[a_button])
@@ -120,7 +127,15 @@ class RegisterPage(object):
             "可抵扣次数": "//label[text()='可抵扣次数']/following-sibling::*/div",
             "备注": "//label[text()='备注']/following-sibling::*/div",
             "抵扣时长": "//label[text()='抵扣时长']/following-sibling::*/div",
-            "vip等级": "//label[text()='vip等级']/following-sibling::*/div/input"
+            "vip等级": "//label[text()='vip等级']/following-sibling::*/div/input",
+            "收费规则": "//label[contains(text(),'收费规则')]/parent::*/div/div/input",
+            "平台分成": "//label[contains(text(),'平台分成')]/parent::*/div/div/input",
+            "商户分成": "//label[contains(text(),'商户分成')]/parent::*/div/div/input",
+            "其它分成": "//label[contains(text(),'其它分成')]/parent::*/div/div/input",
+            "公司支付费用": "//label[contains(text(),'公司支付费用')]/parent::*/div/div/input",
+            "需扣除运费": "//label[contains(text(),'需扣除运费')]/parent::*/div/div/input",
+            "需扣除贴纸费用": "//label[contains(text(),'需扣除贴纸费用')]/parent::*/div/div/input",
+            "人工费": "//label[contains(text(),'人工费')]/parent::*/div/div/input"
         }
         assert location_box in class_map
         self.register_h.input(class_map[location_box], value)
