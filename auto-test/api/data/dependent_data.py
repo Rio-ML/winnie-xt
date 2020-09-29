@@ -10,7 +10,7 @@ class DependentData:
         self.case_id = case_id
         self.opera_excel = OperationExcel()
         xiao_iron = 'E:/xt/winnie-xt/auto-test/api/'
-        self.data = GetData(xiao_iron + 'dataconfig/interfacebar1.xlsx', 2)
+        self.data = GetData(xiao_iron + 'dataconfig/interfacebar1.xlsx', 8)
         self.read_ini = ReadIni()
 
     # 通过 caseid 去获取该 caseID 的整行数据

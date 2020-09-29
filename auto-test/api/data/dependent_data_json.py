@@ -10,7 +10,7 @@ class DependentDataJson:
         self.excel_prop = excel_prop
         self.opera_excel = OperationExcel()
         xiao_iron = 'E:/xt/winnie-xt/auto-test/api/'
-        self.data = GetData(xiao_iron + 'dataconfig/interfacebar1.xlsx', 6)
+        self.data = GetData(xiao_iron + 'dataconfig/interfacebar1.xlsx', 8)
         self.read_ini = ReadIni()
 
     # 组装执行请求需要的数据，组装 excel_prop

@@ -1,0 +1,19 @@
+{"data_contracts":{"cabinetColor":"黄色","images":[
+  {"url":"http://debug2.wegui.cn/logistics/1598510159647_706329_房间分布（参与者）.jpg",
+    "name":"房间分布（参与者）.jpg","size":85216,"uid":1598510159388,"status":"success"}],
+  "siteName":"{{siteName}}","address":"手动阀手动阀","contact":"111","phone":"1111111111111",
+  "sceneType":"商城综合体","subSceneType":"步行街","screen":"outDoor","payRule":"11","remark":"",
+  "shareRateMoney":{"platform":11,"shop":11,"other":"11"},"factory":"","checkRemark":{"check":"",
+    "checking":"","pending":"","prepared":"","suspend":"","done":"","config":"","canceled":"","reject":"","end":""},
+  "cabinetInfo":[{"cabinetType":"balance","name":"","lockerCount":22,"sectionCount":2,"cabinetCount":1,
+    "locker":[0],"cabinetObj":{"wh":"750x450mm","cabinet1":{"count":1,"locker":10},"section1":
+    {"count":1,"locker":12},"section2":{"count":0,"locker":6},"section3":{"count":0,"locker":4}}}],
+  "paperEnable":false,"canopyEnable":false,"siteInfo":{"peopleCount":11,"workTime":"11","money":11,"screenSize":11,
+    "otherMoney":1100},"putType":"put","areaCode":"150500","openTime":0,"closeTime":1440,"needFreight":false,
+  "footCupEnable":false,"wheelEnable":false,"oceanEnable":false,"waterEnable":false,"signEnable":false,
+  "freightMoney":0,"needSticker":false,"stickerMoney":0,"needLabor":false,"laborMoney":0,"payedRemark":"",
+  "province":"内蒙古自治区","city":"通辽市","area":"库伦旗","originator":{"__type":"Pointer","className":"_User",
+    "objectId":"C0NqaTvfti"},"operators":["lCYuzNNBmD"],"senders":["RR9yjT56Ry"]},
+  "data_agree_contract":{},
+  "data_agree_approval":{"remark":"auto","status":"done"}
+}
