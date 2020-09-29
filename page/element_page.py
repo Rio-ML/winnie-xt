@@ -220,15 +220,15 @@ class RegisterPage(object):
     # 微信管理端 合作商各种权限对应的权限模块
     def wx_agent_power_list(self, power_list):
         class_map = {
-            "main": ['网点管理', '机柜管理', '订单管理', '审批', '合同审批', '发货申请', '合同审批(新)', '发货申请(新)', '收益记录', '数据统计', '提现', '满柜监控', '客户报备', '峰值统计', '设置'],
-            "operator": ['网点管理', '机柜管理', '订单管理', '审批', '合同审批', '发货申请', '合同审批(新)', '发货申请(新)', '满柜监控', '设置'],
+            "main": ['网点管理', '机柜管理', '订单管理', '审批', '合同审批(新)', '发货申请(新)', '收益记录', '数据统计', '提现', '满柜监控', '客户报备', '峰值统计', '设置'],
+            "operator": ['网点管理', '机柜管理', '订单管理', '审批', '合同审批(新)', '发货申请(新)', '满柜监控', '设置'],
             "accountant": ['审批', '收益记录', '数据统计', '提现', '设置'],
             "partner": ['机柜管理', '审批', '收益记录', '设置'],
             "regulator": ['机柜管理', '审批', '收益记录', '提现', '设置']
         }
         return class_map[power_list]
 
-    # 微信管理端 合作商各种权限对应的权限模块
+    # 微信管理端 出资人各种权限对应的权限模块
     def wx_investor_power_list(self, power_list):
         class_map = {
             "main": ['机柜管理', '订单管理', '收益记录', '提现', '数据分析', '数据概括', '设置'],
@@ -323,5 +323,11 @@ class SessionToken(object):
     def web_headers(self):
         headers = {"Content-Type": "application/json",
                    "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
-                   "Xi-Session-Token": SessionToken.login_session_token(self, 'xiaodwx', '123456')}
+                   "Xi-Session-Token": SessionToken.login_session_token(self, 'xiaodwx', 'abc123')}
         return headers
+
+    # def web_headers(self):
+    #     headers = {"Content-Type": "application/json",
+    #                "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
+    #                "Xi-Session-Token": "r:3f800dd2f7336211caa27e9452d23ca0"}
+    #     return headers

@@ -12,26 +12,28 @@ class DriverInitExchange:
         options = webdriver.ChromeOptions()
         options.add_experimental_option('mobileEmulation', mobile_emulation)
         # 设置成手机模式 结束
+
         # Windows 配置 开始
-        # driver = webdriver.Chrome(executable_path='chromedriver.exe', chrome_options=options)
+        driver = webdriver.Chrome(executable_path='chromedriver.exe', chrome_options=options)
         # Windows 配置 结束
+
         # mac 配置 开始
-        options.binary_location = "/Applications/IT/Google Chrome.app/Contents/MacOS/Google Chrome"
-        chrome_driver_binary = "/usr/local/bin/chromedriver"
-        driver = webdriver.Chrome(chrome_driver_binary, chrome_options=options)
+        # options.binary_location = "/Applications/IT/Google Chrome.app/Contents/MacOS/Google Chrome"
+        # chrome_driver_binary = "/usr/local/bin/chromedriver"
+        # driver = webdriver.Chrome(chrome_driver_binary, chrome_options=options)
         # mac 配置 结束
         return driver
 
     @staticmethod
     def web_driver():
-        options = webdriver.ChromeOptions()
         # mac 配置 开始
-        options.binary_location = "/Applications/IT/Google Chrome.app/Contents/MacOS/Google Chrome"
-        chrome_driver_binary = "/usr/local/bin/chromedriver"
-        driver = webdriver.Chrome(chrome_driver_binary, chrome_options=options)
+        # options = webdriver.ChromeOptions()
+        # options.binary_location = "/Applications/IT/Google Chrome.app/Contents/MacOS/Google Chrome"
+        # chrome_driver_binary = "/usr/local/bin/chromedriver"
+        # driver = webdriver.Chrome(chrome_driver_binary, chrome_options=options)
         # mac 配置 结束
 
         # windows配置
-        # dirver = webdriver.Chrome()
+        driver = webdriver.Chrome()
         # windows配置
         return driver

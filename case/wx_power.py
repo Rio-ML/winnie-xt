@@ -126,7 +126,7 @@ class TestReserveTable(unittest.TestCase):
                 print('所有权限:', role + "权限错误", '\n', right_list, '\n', lists)
             self.rp.wx_logout()
 
-    @unittest.skip('不执行')
+    # @unittest.skip('不执行')
     # 商户权限-无提现模块
     def test_006(self):
         url = 'http://debug2.wegui.cn/v1/users/hYerDH4nHm'
@@ -153,7 +153,7 @@ class TestReserveTable(unittest.TestCase):
                     print('关闭提现权限:', role + "权限错误", '\n', right_list, '\n', lists)
                 # self.rp.wx_logout()
 
-    @unittest.skip('不执行')
+    # @unittest.skip('不执行')
     # 商户权限-无快捷管理权限
     def test_007(self):
         url = 'http://debug2.wegui.cn/v1/users/hYerDH4nHm'
@@ -179,7 +179,7 @@ class TestReserveTable(unittest.TestCase):
                 print('关闭快捷管理权限:', role + "权限错误", '\n', right_list, '\n', lists)
             # self.rp.wx_logout()
 
-    @unittest.skip('不执行')
+    # @unittest.skip('不执行')
     # 商户权限-无商户基础报告权限，数据统计
     def test_008(self):
         url = 'http://debug2.wegui.cn/v1/users/hYerDH4nHm'
@@ -206,7 +206,7 @@ class TestReserveTable(unittest.TestCase):
                     print('关闭数据统计权限:', role + "权限错误", '\n', right_list, '\n', lists)
                 # self.rp.wx_logout()
 
-    @unittest.skip('不执行')
+    # @unittest.skip('不执行')
     # 合作商权限
     # 【管理员】网点管理，机柜管理，订单管理，审批，合同审批，发货申请，合同审批（新），发货申请（新），收益记录，数据统计，提现（配置），满柜监控，客户报备，峰值统计，设置
     # 【运维员】网点管理，机柜管理，订单管理，审批，合同审批，发货申请，合同审批（新），发货申请（新），满柜监控，设置
@@ -237,7 +237,7 @@ class TestReserveTable(unittest.TestCase):
                 print('所有权限:', role + "权限错误", '\n', right_list, '\n', lists)
             # self.rp.wx_logout()
 
-    @unittest.skip('不执行')
+    # @unittest.skip('不执行')
     # 合作商权限-无提现权限
     def test_010(self):
         url = 'http://debug2.wegui.cn/v1/users/TnSFqkLR9D'
@@ -292,8 +292,8 @@ class TestReserveTable(unittest.TestCase):
                 print('所有权限:', role + "权限错误", '\n', right_list, '\n', lists)
             # self.rp.wx_logout()
 
-    @unittest.skip('不执行')
-    # 出资人权限-无提现权限-目前写死权限不受提现影响
+    # @unittest.skip('不执行')
+    # 出资人权限-无提现权限-目前写死权限不受提现影响--不管是否开提现 都有提现
     # 【管理员】机柜管理，订单管理，收益统计，提现，数据概况，数据分析，设置
     def test_012(self):
         url = 'http://debug2.wegui.cn/v1/users/MCenqjtx4R'

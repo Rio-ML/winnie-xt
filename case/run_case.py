@@ -211,9 +211,82 @@ from pytesseract.pytesseract import image_to_string
 #
 # a =  '2020-08-14 14:21:56'
 # print(a[0:10])
-a = ['1.5', '49.5', '20.5', '30', '30', '1200.25', '10.11', '20.22', '30.33']
-b = ['1.5', '49.5', '20.5', '30', '30', '1200.25', '10.11', '20.22', '30.33']
-if a == b:
-    print("通过")
-else:
-    print("不通过")
+# a = ['1.5', '49.5', '20.5', '30', '30', '1200.25', '10.11', '20.22', '30.33']
+# b = ['1.5', '49.5', '20.5', '30', '30', '1200.25', '10.11', '20.22', '30.33']
+# if a == b:
+#     print("通过")
+# else:
+#     print("不通过")
+# contract_num = "合同审批081408"
+# headers = {"Content-Type": "application/json",
+#            "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
+#            "Xi-Session-Token": "r:fc3eafc70e0cb4c8ab6752f47e92f9b0"}
+# url_contracts = 'http://debug2.wegui.cn/v1/contracts'
+# data_contracts = {"cabinetColor": "黑色", "images": [
+#     {"url": "http://debug2.wegui.cn/logistics/1597147928018_825093_1.jpg", "name": "1.jpg", "size": 2415133,
+#      "uid": 1597147928055, "status": "success"}],
+#                   "siteName": contract_num, "address": "在这里", "contact": "dxs", "phone": "188888888888",
+#                   "sceneType": "观光景区",
+#                   "subSceneType": "影视城", "screen": "outDoor", "payRule": "5", "remark": "这里是备注",
+#                   "shareRateMoney": {"platform": 50, "shop": 30, "other": "20"}, "factory": "",
+#                   "checkRemark": {"check": "", "checking": "", "pending": "", "prepared": "", "suspend": "", "done": "",
+#                                   "config": "", "canceled": "", "reject": "", "end": ""}, "cabinetInfo": [
+#         {"cabinetType": "balance", "name": "", "lockerCount": 32, "sectionCount": 4, "cabinetCount": 1, "locker": [0],
+#          "cabinetObj": {"wh": "750x450mm", "cabinet1": {"count": 1, "locker": 10},
+#                         "section1": {"count": 1, "locker": 12}, "section2": {"count": 1, "locker": 6},
+#                         "section3": {"count": 1, "locker": 4}}}],
+#                   "paperEnable": True, "canopyEnable": True,
+#                   "siteInfo": {"peopleCount": 3, "workTime": "2", "money": 1, "screenSize": 4, "otherMoney": 10000},
+#                   "putType": "put", "areaCode": "130300", "openTime": 2, "closeTime": 432, "needFreight": True,
+#                   "footCupEnable": True, "wheelEnable": True, "oceanEnable": True, "waterEnable": False,
+#                   "signEnable": False,
+#                   "freightMoney": 1011, "needSticker": True, "stickerMoney": 2022, "needLabor": True,
+#                   "laborMoney": 3033,
+#                   "payedRemark": "", "province": "河北省", "city": "秦皇岛市", "area": "山海关区",
+#                   "originator": {"__type": "Pointer", "className": "_User", "objectId": "C0NqaTvfti"},
+#                   "operators": ["lCYuzNNBmD"], "senders": ["RR9yjT56Ry"]}
+# res_get_oj = requests.post(url_contracts, data=json.dumps(data_contracts), headers=headers)
+# print(res_get_oj)
+
+# 微信端关闭订单
+orderid = []
+headers = {"Content-Type": "application/json",
+           "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
+           "Xi-Session-Token": "r:f8d18ca92435f20a4649353513052971"}
+url_order = 'https://azapi.wegui.cn/v1/orders?skip=0&limit=100&order=-startAt&include=user,coupon&where=%7B%22status%22:%22processing%22%7D'
+get_orderid = requests.get(url_order, headers=headers)
+
+try:
+    for i in range(0, 73):
+        a = get_orderid.json()[i]['objectId']
+        i += 1
+        orderid.append(a)
+    print(orderid)
+except IndexError as e:
+    print(e)
+
+for order in orderid:
+    url = "https://azapi.wegui.cn/v1/orders/" + order + "/unlock"
+    data_contracts = {"closeOrder": True}
+    headers = {"Content-Type": "application/json",
+               "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
+               "Xi-Session-Token": "r:f8d18ca92435f20a4649353513052971"}
+    res_get_oj = requests.post(url, data=json.dumps(data_contracts), headers=headers)
+    print(res_get_oj.json())
+
+# 后台管理获取所有锁id
+# orderid = []
+# url = "http://debug2.wegui.cn/v1/lockers?limit=360&skip=0&order=name&include=order.user,cabinet&where=%7B%22cabinet%22:%7B%22__type%22:%22Pointer%22,%22className%22:%22Cabinet%22,%22objectId%22:%22AKpPpQektg%22%7D,%22status%22:%7B%22$ne%22:%22disabled%22%7D%7D"
+# headers = {"Content-Type": "application/json",
+#            "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
+#            "Xi-Session-Token": "r:61bb0b1fe26963909c4f5aaf74e2e8ee"}
+# get_orderid = requests.get(url, headers=headers)
+# try:
+#     for i in range(0, 72):
+#         a = get_orderid.json()[i]['objectId']
+#         print(a)
+#         i += 1
+#         orderid.append(a)
+#     print(orderid)
+# except IndexError as e:
+#     print(e)

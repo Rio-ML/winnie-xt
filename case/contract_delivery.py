@@ -11,6 +11,7 @@ from page.element_page import RegisterPage
 from page.element_page import SessionToken
 from util.DriverExchange import DriverInitExchange
 
+
 '''
 后台管理发货申请&合同审批
 分成，主副柜，扣除费用对比
@@ -46,28 +47,28 @@ def create_contract_approve(token, contract_num):
             "freightMoney": 1011, "needSticker": True, "stickerMoney": 2022, "needLabor": True, "laborMoney": 3033,
             "payedRemark": "", "province": "河北省", "city": "秦皇岛市", "area": "山海关区",
             "originator": {"__type": "Pointer", "className": "_User", "objectId": "C0NqaTvfti"},
-            "operators": ["lCYuzNNBmD"], "senders": []}
+            "operators": ["lCYuzNNBmD"], "senders": ["RR9yjT56Ry"]}
     res_get_oj = requests.post(url_contracts, data=json.dumps(data_contracts), headers=token.web_headers())
     # expected_result = []
-    platform_percent = res_get_oj.json()['shareRateMoney']['platform']
-    shop_percent = res_get_oj.json()['shareRateMoney']['shop']
-    other_percent = res_get_oj.json()['shareRateMoney']['other']
-    percent = '平台：' + str(platform_percent) + '，商户：' + str(shop_percent) + '，' + str(other_percent)
+    # platform_percent = res_get_oj.json()['shareRateMoney']['platform']
+    # shop_percent = res_get_oj.json()['shareRateMoney']['shop']
+    # other_percent = res_get_oj.json()['shareRateMoney']['other']
+    # percent = '平台：' + str(platform_percent) + '，商户：' + str(shop_percent) + '，' + str(other_percent)
     # expected_result.append(percent)
-    cabinetCount = res_get_oj.json()['cabinetInfo'][0]['cabinetCount']
-    sectionCount = res_get_oj.json()['cabinetInfo'][0]['sectionCount'] - cabinetCount
-    lockerCount = res_get_oj.json()['cabinetInfo'][0]['lockerCount']
-    cab_count = str(cabinetCount) + '主' + str(sectionCount) + '副' + str(lockerCount) + '门'
+    # cabinetCount = res_get_oj.json()['cabinetInfo'][0]['cabinetCount']
+    # sectionCount = res_get_oj.json()['cabinetInfo'][0]['sectionCount'] - cabinetCount
+    # lockerCount = res_get_oj.json()['cabinetInfo'][0]['lockerCount']
+    # cab_count = str(cabinetCount) + '主' + str(sectionCount) + '副' + str(lockerCount) + '门'
     # expected_result.append(cab_count)
-    freightMoney = int(res_get_oj.json()['freightMoney']) / 100
-    stickerMoney = int(res_get_oj.json()['stickerMoney']) / 100
-    laborMoney = int(res_get_oj.json()['laborMoney']) / 100
-    discount_money = '需扣除运费金额：' + str(freightMoney) + '，需扣除贴纸费用：' + str(stickerMoney) + '，需扣除人工费用：' + str(laborMoney)
+    # freightMoney = int(res_get_oj.json()['freightMoney']) / 100
+    # stickerMoney = int(res_get_oj.json()['stickerMoney']) / 100
+    # laborMoney = int(res_get_oj.json()['laborMoney']) / 100
+    # discount_money = '需扣除运费金额：' + str(freightMoney) + '，需扣除贴纸费用：' + str(stickerMoney) + '，需扣除人工费用：' + str(laborMoney)
     # expected_result.append(discount_money)
     # 将审批申请放到待我审批
-    url_agree_conrtract = 'http://debug2.wegui.cn/v1/contracts/' + res_get_oj.json()['objectId']
-    data_agree_conrtract = {}
-    requests.put(url_agree_conrtract, data=json.dumps(data_agree_conrtract), headers=token.web_headers())
+    data_agree_contract = 'http://debug2.wegui.cn/v1/contracts/' + res_get_oj.json()['objectId']
+    data_agree_contract = {}
+    requests.put(data_agree_contract, data=json.dumps(data_agree_contract), headers=token.web_headers())
     # 获取 待我审批 列表的第一个
     url_get_contracts_oj = 'http://debug2.wegui.cn/v1/approvalStages?limit=100&skip=0&order=-status,-createdAt&include=approval.originator.platform,approval.originator.agent,approval.originator.shop,approval.originator.site,approval.contract,approval.logistics&where=%7B%22status%22:%22pending%22,%22approval%22:%7B%22$inQuery%22:%7B%22where%22:%7B%22operator%22:%7B%22$inQuery%22:%7B%22where%22:%7B%22type%22:%7B%22$in%22:[%22platform%22,%22agent%22]%7D,%22objectId%22:%22lCYuzNNBmD%22%7D,%22className%22:%22_User%22%7D%7D,%22status%22:%7B%22$in%22:[%22pending%22,%22processing%22]%7D%7D,%22className%22:%22Approval%22%7D%7D,%22operator%22:%7B%22$inQuery%22:%7B%22where%22:%7B%22type%22:%7B%22$in%22:[%22platform%22,%22agent%22]%7D,%22objectId%22:%22lCYuzNNBmD%22%7D,%22className%22:%22_User%22%7D%7D%7D'
     res_get_contracts_oj = requests.get(url_get_contracts_oj, headers=token.web_headers())
@@ -140,9 +141,9 @@ def web_contract_comparison():
     os = WebDriverWait(web_driver, 20).until(
         EC.visibility_of_element_located((By.XPATH, "//div[text()='备注：']/following-sibling::*"))).text
     # 将结果批量加入list
-    web_test_result.extend([site_name, scene, scene_type, contact_name, site_add, open_time, perday_money,
-                        open_daytime, place_people, place_size, cor, payrule, percent,
-                       company_payrule, discount, cab_enviroment, other_enviroment, cab_color, cab_num, associate, os])
+    web_test_result.extend([site_name, scene, scene_type, contact_name, site_add, open_time, perday_money, open_daytime,
+                            place_people, place_size, cor, payrule, percent, company_payrule, discount, cab_enviroment,
+                            other_enviroment, cab_color, cab_num, associate, os])
     print(web_test_result)
     web_driver.close()
     return web_test_result
