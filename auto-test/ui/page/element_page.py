@@ -4,6 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 import json
+import requests
 from ui.util.DriverInit import DriverInit
 from ui.handle.get_utils import ActionUtil
 
@@ -43,10 +44,24 @@ class RegisterPage(object):
         res = requests.post(url, data=json.dumps(data), headers=headers)
         return res.json()['sessionToken']
 
+    def KDG_login_session_token(self, user, password):
+        url = 'https://lwd2.wegui.cn/v1/login'
+        headers = {"Content-Type": "application/json",
+                   "Xi-App-Id": "ce5cec2cfd1440759db6fa992b0641b7"}
+        data = {"username": user, "password": password}
+        res = requests.post(url, data=json.dumps(data), headers=headers)
+        return res.json()['sessionToken']
+
     def web_headers(self):
         headers = {"Content-Type": "application/json",
                    "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
                    "Xi-Session-Token": RegisterPage.login_session_token(self, 'xiaodwx', '123456')}
+        return headers
+
+    def KDG_web_headers(self):
+        headers = {"Content-Type": "application/json",
+                   "Xi-App-Id": "ce5cec2cfd1440759db6fa992b0641b7",
+                   "Xi-Session-Token": RegisterPage.KDG_login_session_token(self, 'dxsauto', 'abc123')}
         return headers
 
 

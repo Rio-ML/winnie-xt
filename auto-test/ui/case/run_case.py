@@ -201,10 +201,16 @@ from pytesseract.pytesseract import image_to_string
 # print(json.dumps(data_obj))
 
 
-list = ['tt', 'aa', 'bb']
-if 'ee' in list:
-    list.remove('ee')
-    print(list)
-else:
-    # list.remove('ee')
-    print(list)
+# list = ['tt', 'aa', 'bb']
+# if 'ee' in list:
+#     list.remove('ee')
+#     print(list)
+# else:
+#     # list.remove('ee')
+#     print(list)
+value = '18707175056'
+a = list(value)
+print(a)
+for i in a:
+    # self.d(resourceId=class_map[i]).click()
+    print(i)
