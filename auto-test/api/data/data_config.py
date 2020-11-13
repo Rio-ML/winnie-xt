@@ -138,7 +138,7 @@ def get_pc_key(user):
     login_url = 'http://debug2.wegui.cn/v1/login'
     data_order = {
         "username": user,
-        "password": "123456"
+        "password": "abc123"
     }
     login_headers = {
         'Content-Type': 'application/json',

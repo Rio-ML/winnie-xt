@@ -68,12 +68,36 @@
 # if __name__ == '__main__':
 #     read_init = ReadIni(node='ExcelPath')
 #     print(read_init.get_value('sheet_id'))
-for i in range(1, 8):
-    list = [1, 2, 4]
-    if i == 3 and i in list:
-        list.remove(i)
-        print(list)
-        i += 1
-    else:
-        print("ddddd")
-        i += 1
+# for i in range(1, 8):
+#     list = [1, 2, 4]
+#     if i == 3 and i in list:
+#         list.remove(i)
+#         print(list)
+#         i += 1
+#     else:
+#         print("ddddd")
+#         i += 1
+import json
+import jsonpath
+data = {
+    "duringTime": 401,
+    "timesPerDay": 10000,
+    "device":{
+        "appid":1,
+        "appName":"com.planet2345.com",
+        "appName2":"com.planet2345.com2"
+    }
+}
+
+
+def get_json_value(json_data, key_name):
+    '''获取到json中任意key的值,结果为list格式'''
+    key_value = jsonpath.jsonpath(json_data, '$..{key_name}'.format(key_name=key_name))
+    # key的值不为空字符串或者为empty（用例中空固定写为empty）返回对应值，否则返回empty
+
+    return key_value
+
+
+if __name__ == '__main__':
+    a = get_json_value(data, 'appid')
+    print(a)

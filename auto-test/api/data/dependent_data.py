@@ -31,7 +31,7 @@ class DependentData:
 
     # 根据依赖的key去获取执行依赖测试case的响应，然后返回
     def get_data_for_key(self, row):
-        depend_data = self.data.get_depend_key(row)
+        depend_data = self.data.get_request_data(row)
         is_pre_start = depend_data.startswith('pre:')
         if is_pre_start:
             depend_key = depend_data.split(':')[1]
