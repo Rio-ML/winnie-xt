@@ -4,6 +4,7 @@ import time
 import uiautomator2 as u2
 from ui.page.KDGpage import PadPage
 from ui.page.element_page import RegisterPage
+from ui.page.element_page import SessionToken
 import uiautomator2.ext.htmlreport as htmlreport
 import requests
 import json
@@ -26,6 +27,7 @@ class Verify_Apps1(unittest.TestCase):
     def setUp(self):
         self.pp = PadPage('G7FXO2C677')
         self.rp = RegisterPage(self)
+        self.st = SessionToken()
         self.pp.d.toast.show('测试开始', 3)
 
     def tearDown(self):
@@ -52,7 +54,7 @@ class Verify_Apps1(unittest.TestCase):
         url = 'https://lwd2.wegui.cn/v1/sites/xN3ZvEoioM'
         # {"prohibit":["s","m","l","xs"]}
         data = {"prohibit": ["s", "m"]}
-        requests.put(url, data=json.dumps(data), headers=self.rp.KDG_web_headers())
+        requests.put(url, data=json.dumps(data), headers=self.st.KDG_web_headers())
         self.pp.deliver_login('18707175056', '222222')
         self.pp.pad_button("小柜")
         self.pp.pad_input_text("单号", "1122334455")

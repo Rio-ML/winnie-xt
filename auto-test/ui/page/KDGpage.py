@@ -58,19 +58,19 @@ class PadPage(object):
         self.d(resourceId=class_map[location_box]).click()
         self.d.send_keys(value, clear=True)
 
-    # 各种弹框确认
-    def alert_check(self, xpath, alert_title, yes_or_no):
-        class_map = {
-            "是否继续填写上次保存的申请？": "//div[text()='是否继续填写上次保存的申请？']"
-        }
-        class_map1 = {
-            "否，删除记录": "//div[text()='否，删除记录']",
-            "是，继续": "//div[text()='是，继续']"
-        }
-        assert alert_title in class_map
-        assert yes_or_no in class_map1
-        if self.register_h.get_attribute(xpath, class_map[alert_title]):
-            self.register_h.click(class_map1[yes_or_no])
+    # # 各种弹框确认----待完善
+    # def alert_check(self, xpath, alert_title, yes_or_no):
+    #     class_map = {
+    #         "是否继续填写上次保存的申请？": "//div[text()='是否继续填写上次保存的申请？']"
+    #     }
+    #     class_map1 = {
+    #         "否，删除记录": "//div[text()='否，删除记录']",
+    #         "是，继续": "//div[text()='是，继续']"
+    #     }
+    #     assert alert_title in class_map
+    #     assert yes_or_no in class_map1
+    #     if self.register_h.get_attribute(xpath, class_map[alert_title]):
+    #         self.register_h.click(class_map1[yes_or_no])
 
     # 键盘
     def pad_keyboard(self, value):
@@ -91,16 +91,15 @@ class PadPage(object):
         for i in a:
             self.d(resourceId=class_map[i]).click()
 
-
-    # 文案检查
-    def text_check(self, location_box, value):
-        class_map = {
-            "取件单号": "com.motern.cherry.monitor:id/order_num",
-            "取件号码": "com.motern.cherry.monitor:id/order_phone",
-            "打开柜门": "com.motern.cherry.monitor:id/locker_name",
-        }
-        assert location_box in class_map
-        self.register_h.input(class_map[location_box], value)
+    # # 文案检查----待完善
+    # def text_check(self, location_box, value):
+    #     class_map = {
+    #         "取件单号": "com.motern.cherry.monitor:id/order_num",
+    #         "取件号码": "com.motern.cherry.monitor:id/order_phone",
+    #         "打开柜门": "com.motern.cherry.monitor:id/locker_name",
+    #     }
+    #     assert location_box in class_map
+    #     self.register_h.input(class_map[location_box], value)
 
 
 if __name__ == '__main__':

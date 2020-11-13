@@ -9,6 +9,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
+from ui.page.element_page import SessionToken
 import requests
 import json
 
@@ -23,6 +24,7 @@ class TestReserveTable(unittest.TestCase):
         self.driver = DriverInit().driver
         self.rb = RegisterBusiness(self.driver)
         self.rp = RegisterPage(self.driver)
+        self.st = SessionToken()
 
     def tearDown(self):
         time.sleep(3)

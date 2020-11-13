@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
+from ui.util.DriverExchange import DriverInitExchange
 import json
 import requests
 from ui.util.DriverInit import DriverInit
@@ -34,36 +35,6 @@ class RegisterPage(object):
         self.register_h.input("//input[@placeholder='登陆账号']", username)
         self.register_h.input("//input[@placeholder='请输入密码']", password)
         self.register_h.click("//span[text()='确定']")
-
-    # 返回session_token
-    def login_session_token(self, user, password):
-        url = 'http://debug2.wegui.cn/v1/auth/login'
-        headers = {"Content-Type": "application/json",
-                   "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70"}
-        data = {"username": user, "password": password, "code": "", "uuid": "92218c6d-56c9-42d5-a078-a78f5da925bd"}
-        res = requests.post(url, data=json.dumps(data), headers=headers)
-        return res.json()['sessionToken']
-
-    def KDG_login_session_token(self, user, password):
-        url = 'https://lwd2.wegui.cn/v1/login'
-        headers = {"Content-Type": "application/json",
-                   "Xi-App-Id": "ce5cec2cfd1440759db6fa992b0641b7"}
-        data = {"username": user, "password": password}
-        res = requests.post(url, data=json.dumps(data), headers=headers)
-        return res.json()['sessionToken']
-
-    def web_headers(self):
-        headers = {"Content-Type": "application/json",
-                   "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
-                   "Xi-Session-Token": RegisterPage.login_session_token(self, 'xiaodwx', '123456')}
-        return headers
-
-    def KDG_web_headers(self):
-        headers = {"Content-Type": "application/json",
-                   "Xi-App-Id": "ce5cec2cfd1440759db6fa992b0641b7",
-                   "Xi-Session-Token": RegisterPage.KDG_login_session_token(self, 'dxsauto', 'abc123')}
-        return headers
-
 
     # 各种按钮
     def wx_button(self, a_button):
@@ -101,10 +72,26 @@ class RegisterPage(object):
             "状态": "//label[text()='状态']/following-sibling::*/div",
             "上架": "//span[text()='上架']",
             "下架": "//span[text()='下架']",
-            "添加优惠券-确定": "//div[@aria-label='添加优惠券']/div/div/button/span[text()='确 定']"
+            "添加优惠券-确定": "//div[@aria-label='添加优惠券']/div/div/button/span[text()='确 定']",
+            "添加合同": "//span[contains(text(),'添加合同')]",
+            "需扣除运费-是": "(//label[contains(text(),'需扣除运费')]/following-sibling::*/label)[1]",
+            "需扣除贴纸费用-是": "(//label[contains(text(),'需扣除贴纸费用')]/following-sibling::*/label)[1]",
+            "人工费-是": "(//label[contains(text(),'人工费')]/following-sibling::*/label)[1]",
+            "保存": "//span[contains(text(),'保 存')]",
+            "使用保存的合同申请": "//span[contains(text(),'是，继续')]"
         }
         assert a_button in class_map
         self.register_h.click(class_map[a_button])
+
+    def web_tab(self, a_tab, contract_num=None):
+        if contract_num is None:
+            contract_num = ''
+        class_map = {
+            "已通过": "//a[text()='已通过']",
+            "查看": "(//div[text()='" + contract_num + "']/parent::*/parent::*/td/div/button/span[contains(text(),'查看')]/parent::*)[2]"
+        }
+        assert a_tab in class_map
+        self.register_h.click(class_map[a_tab])
 
     # 各种输入框
     def wx_input_text(self, location_box, value):
@@ -139,10 +126,25 @@ class RegisterPage(object):
             "可抵扣次数": "//label[text()='可抵扣次数']/following-sibling::*/div",
             "备注": "//label[text()='备注']/following-sibling::*/div",
             "抵扣时长": "//label[text()='抵扣时长']/following-sibling::*/div",
-            "vip等级": "//label[text()='vip等级']/following-sibling::*/div/input"
+            "vip等级": "//label[text()='vip等级']/following-sibling::*/div/input",
+            "收费规则": "//label[contains(text(),'收费规则')]/parent::*/div/div/input",
+            "平台分成": "//label[contains(text(),'平台分成')]/parent::*/div/div/input",
+            "商户分成": "//label[contains(text(),'商户分成')]/parent::*/div/div/input",
+            "其它分成": "//label[contains(text(),'其它分成')]/parent::*/div/div/input",
+            "公司支付费用": "//label[contains(text(),'公司支付费用')]/parent::*/div/div/input",
+            "需扣除运费": "//label[contains(text(),'需扣除运费')]/parent::*/div/div/input",
+            "需扣除贴纸费用": "//label[contains(text(),'需扣除贴纸费用')]/parent::*/div/div/input",
+            "人工费": "//label[contains(text(),'人工费')]/parent::*/div/div/input"
         }
         assert location_box in class_map
         self.register_h.input(class_map[location_box], value)
+
+    def web_get_text(self, get_web_text):
+        class_map = {
+            "营业时间": "//div[text()='营业时间：']/following-sibling::*"
+        }
+        assert get_web_text in class_map
+        self.register_h.find_ele(class_map[get_web_text])
 
     # 各种下拉框选择
     def drop_down_box(self, loc_select, value):
@@ -217,8 +219,8 @@ class RegisterPage(object):
     # 微信管理端 合作商各种权限对应的权限模块
     def wx_agent_power_list(self, power_list):
         class_map = {
-            "main": ['网点管理', '机柜管理', '订单管理', '审批', '合同审批', '发货申请', '合同审批(新)', '发货申请(新)', '收益记录', '数据统计', '提现', '满柜监控', '客户报备', '峰值统计', '设置'],
-            "operator": ['网点管理', '机柜管理', '订单管理', '审批', '合同审批', '发货申请', '合同审批(新)', '发货申请(新)', '满柜监控', '设置'],
+            "main": ['网点管理', '机柜管理', '订单管理', '审批', '合同审批(新)', '发货申请(新)', '收益记录', '数据统计', '提现', '满柜监控', '客户报备', '峰值统计', '设置'],
+            "operator": ['网点管理', '机柜管理', '订单管理', '审批', '合同审批(新)', '发货申请(新)', '满柜监控', '设置'],
             "accountant": ['审批', '收益记录', '数据统计', '提现', '设置'],
             "partner": ['机柜管理', '审批', '收益记录', '设置'],
             "regulator": ['机柜管理', '审批', '收益记录', '提现', '设置']
@@ -307,4 +309,32 @@ class RegisterPage(object):
         return class_map
 
 
+class SessionToken(object):
+    # 返回session_token
+    def login_session_token(self, user, password):
+        url = 'http://debug2.wegui.cn/v1/auth/login'
+        headers = {"Content-Type": "application/json",
+                   "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70"}
+        data = {"username": user, "password": password, "code": "", "uuid": "92218c6d-56c9-42d5-a078-a78f5da925bd"}
+        res = requests.post(url, data=json.dumps(data), headers=headers)
+        return res.json()['sessionToken']
 
+    def web_headers(self):
+        headers = {"Content-Type": "application/json",
+                   "Xi-App-Id": "0a8020002101b2ddc7626fca179adf70",
+                   "Xi-Session-Token": SessionToken.login_session_token(self, 'xiaodwx', 'abc123')}
+        return headers
+
+    def KDG_login_session_token(self, user, password):
+        url = 'https://lwd2.wegui.cn/v1/login'
+        headers = {"Content-Type": "application/json",
+                   "Xi-App-Id": "ce5cec2cfd1440759db6fa992b0641b7"}
+        data = {"username": user, "password": password}
+        res = requests.post(url, data=json.dumps(data), headers=headers)
+        return res.json()['sessionToken']
+
+    def KDG_web_headers(self):
+        headers = {"Content-Type": "application/json",
+                   "Xi-App-Id": "ce5cec2cfd1440759db6fa992b0641b7",
+                   "Xi-Session-Token": SessionToken.KDG_login_session_token(self, 'dxsauto', 'abc123')}
+        return headers
