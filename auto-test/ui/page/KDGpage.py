@@ -40,8 +40,9 @@ class PadPage(object):
             "返回": "com.motern.cherry.monitor:id/btn_return"
         }
         assert a_button in class_map
+        self.d.implicitly_wait(20)
         if a_button == "刷新":
-            self.d.xpath(class_map[a_button]).click()
+            self.d.xpath(class_map[a_button]).click(timeout=10)
         else:
             self.d(resourceId=class_map[a_button]).click()
 

@@ -289,9 +289,14 @@ from pytesseract.pytesseract import image_to_string
 #     # list.remove('ee')
 #     print(list)
 
-value = '18707175056'
-a = list(value)
-print(a)
-for i in a:
-    # self.d(resourceId=class_map[i]).click()
-    print(i)
+# value = '18707175056'
+# a = list(value)
+# print(a)
+# for i in a:
+#     # self.d(resourceId=class_map[i]).click()
+#     print(i)
+from api.Base.runmethod import RunMethod
+from api.data import data_config
+find_user_url = 'http://debug2.wegui.cn/v1/users?limit=100&skip=0&order=-createdAt&include=wallet,fromSite,weixin&where={"type":"consumer","nickname":"邓～XS Winnie"}'
+find_user_res = RunMethod().run_main('get', find_user_url, header=data_config.pc_headers('xiaodwx'))
+print(len(find_user_res))

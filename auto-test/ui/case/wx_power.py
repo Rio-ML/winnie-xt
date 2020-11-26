@@ -107,7 +107,7 @@ class TestReserveTable(unittest.TestCase):
         role_list = ['main', 'operator', 'accountant', 'partner', 'regulator']
         for role in role_list:
             data = self.rp.wx_shop_power(role, True, True, True, True, True, True)
-            requests.put(url, data=data, headers=self.rp.web_headers())
+            requests.put(url, data=data, headers=self.st.web_headers())
             self.driver.implicitly_wait(30)
             self.rp.open_url("http://wxadmin.wegui.cn/admin/#/")
             self.rp.wx_login('shop', 'abc123')
@@ -132,7 +132,7 @@ class TestReserveTable(unittest.TestCase):
         role_list = ['main', 'operator', 'accountant', 'partner', 'regulator']
         for role in role_list:
             data = self.rp.wx_shop_power(role, True, True, False, True, True, True)
-            requests.put(url, data=data, headers=self.rp.web_headers())
+            requests.put(url, data=data, headers=self.st.web_headers())
             self.driver.implicitly_wait(30)
             self.rp.open_url("http://wxadmin.wegui.cn/admin/#/")
             self.rp.wx_login('shop', 'abc123')
@@ -159,7 +159,7 @@ class TestReserveTable(unittest.TestCase):
         role_list = ['main', 'operator', 'accountant', 'partner', 'regulator']
         for role in role_list:
             data = self.rp.wx_shop_power(role, True, True, True, False, True, True)
-            requests.put(url, data=data, headers=self.rp.web_headers())
+            requests.put(url, data=data, headers=self.st.web_headers())
             self.driver.implicitly_wait(30)
             self.rp.open_url("http://wxadmin.wegui.cn/admin/#/")
             self.rp.wx_login('shop', 'abc123')
@@ -185,7 +185,7 @@ class TestReserveTable(unittest.TestCase):
         role_list = ['main', 'operator', 'accountant', 'partner', 'regulator']
         for role in role_list:
             data = self.rp.wx_shop_power(role, True, True, True, True, True, False)
-            requests.put(url, data=data, headers=self.rp.web_headers())
+            requests.put(url, data=data, headers=self.st.web_headers())
             self.driver.implicitly_wait(30)
             self.rp.open_url("http://wxadmin.wegui.cn/admin/#/")
             self.rp.wx_login('shop', 'abc123')
@@ -218,7 +218,7 @@ class TestReserveTable(unittest.TestCase):
         for role in role_list:
             # 布尔值 web（后台登陆）,wxadmin（微信管理端），withdraw（提现）
             data = self.rp.wx_agent_power(role, True, True, True)
-            requests.put(url, data=data, headers=self.rp.web_headers())
+            requests.put(url, data=data, headers=self.st.web_headers())
             self.driver.implicitly_wait(30)
             self.rp.open_url("http://wxadmin.wegui.cn/admin/#/")
             self.rp.wx_login('xd05', 'abc123')
@@ -244,7 +244,7 @@ class TestReserveTable(unittest.TestCase):
         for role in role_list:
             # 布尔值 web（后台登陆）,wxadmin（微信管理端），withdraw（提现）
             data = self.rp.wx_agent_power(role, True, True, False)
-            requests.put(url, data=data, headers=self.rp.web_headers())
+            requests.put(url, data=data, headers=self.st.web_headers())
             self.driver.implicitly_wait(30)
             self.rp.open_url("http://wxadmin.wegui.cn/admin/#/")
             self.rp.wx_login('xd05', 'abc123')
@@ -273,7 +273,7 @@ class TestReserveTable(unittest.TestCase):
         for role in role_list:
             # 布尔值 web（后台登陆）,wxadmin（微信管理端），withdraw（提现）
             data = self.rp.wx_investor_power(role, True, True, True)
-            requests.put(url, data=data, headers=self.rp.web_headers())
+            requests.put(url, data=data, headers=self.st.web_headers())
             self.driver.implicitly_wait(30)
             self.rp.open_url("http://wxadmin.wegui.cn/admin/#/")
             self.rp.wx_login('xd153', 'abc123')
@@ -300,7 +300,7 @@ class TestReserveTable(unittest.TestCase):
         for role in role_list:
             # 布尔值 web（后台登陆）,wxadmin（微信管理端），withdraw（提现）
             data = self.rp.wx_investor_power(role, True, True, False)
-            requests.put(url, data=data, headers=self.rp.web_headers())
+            requests.put(url, data=data, headers=self.st.web_headers())
             self.driver.implicitly_wait(30)
             self.rp.open_url("http://wxadmin.wegui.cn/admin/#/")
             self.rp.wx_login('xd153', 'abc123')
