@@ -24,7 +24,10 @@ class PadPage(object):
             "刷新": '//*[@resource-id="com.motern.cherry.monitor:id/rl_refresh"]/android.widget.ImageView[1]',
             "取件码取包": '//*[@resource-id="com.motern.cherry.monitor:id/authority_code_btn"]',
             "返回": '//*[@resource-id="com.motern.cherry.monitor:id/btn_return"]',
-            "密码取包": '//*[@resource-id="com.motern.cherry.monitor:id/rl_root2"]/android.widget.RelativeLayout[6]',
+            "取走物品": '//*[@resource-id="com.motern.cherry.monitor:id/btn_over"]',
+            "中途开门": '//*[@resource-id="com.motern.cherry.monitor:id/btn_get_bag"]',
+            "不存了": '//*[@resource-id="com.motern.cherry.monitor:id/fg_tc_btn_confirm"]',
+            "还要存": '//*[@resource-id="com.motern.cherry.monitor:id/fg_tc_btn_cancel"]',
             "键盘-删除": '//*[@resource-id="com.motern.cherry.monitor:id/btn_cancel"]',
             "键盘-确定": '//*[@resource-id="com.motern.cherry.monitor:id/btn_code_confirm"]'
         }

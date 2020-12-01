@@ -295,8 +295,80 @@ from pytesseract.pytesseract import image_to_string
 # for i in a:
 #     # self.d(resourceId=class_map[i]).click()
 #     print(i)
-from api.Base.runmethod import RunMethod
-from api.data import data_config
-find_user_url = 'http://debug2.wegui.cn/v1/users?limit=100&skip=0&order=-createdAt&include=wallet,fromSite,weixin&where={"type":"consumer","nickname":"邓～XS Winnie"}'
-find_user_res = RunMethod().run_main('get', find_user_url, header=data_config.pc_headers('xiaodwx'))
-print(len(find_user_res))
+# from api.Base.runmethod import RunMethod
+# from api.data import data_config
+#
+#
+# order_url = 'https://azapi.wegui.cn/v1/orders'
+# # order_data = {"cabinetId": self.find_cabinet(cab_no), "rentType": "short", "lockerType": "s",
+# #               "passwordEnable": False, "prepaid": 1, "manualLockerEnable": True, "lockerId": "zxdG04YqEi"}
+# order_data = {"cabinetId": "AKpPpQektg", "rentType": "short", "lockerType": "s",
+#               "passwordEnable": False, "prepaid": 0, "manualLockerEnable": True, "lockerId": "zxdG04YqEi"}
+# order_res = RunMethod().run_main('post', order_url, data=json.dumps(order_data), header=data_config.wx_headers())
+# print(order_res)
+# from itertools import combinations, permutations
+# list1=list(permutations([1,1,1,2,2,2],6))
+# list2={}.fromkeys(list1).keys()
+# print(list2)
+
+# # 小明有两种读书方式，精读1本或者速读2本，现在他告诉你他读了N本书，那么他有多少种读书方式呢？
+# from scipy.special import comb
+# def ou_num(n):
+#     list1 = []
+#     list2 = []
+#     x = -2
+#     for i in range(1, int(n/2+1)+1):
+#         list1.append(n)
+#         n -= 2
+#         x += 2
+#         list2.append(x)
+#     return list1, list2
+#
+# def ji_num(n):
+#     list1 = []
+#     list2 = []
+#     x = 0
+#     for i in range(1, int(n/2+1)+1):
+#         list1.append(n)
+#         n -= 2
+#         list2.append(x)
+#         x += 2
+#     return list1, list2
+#
+# def all_num(n):
+#     if n % 2 == 0:
+#         a = ou_num(n)[0]
+#         b = ou_num(n)[1]
+#         list_cum_result = []
+#         for i in range(1, len(a)):
+#             way = int(comb(a[i] + b[i] / 2, a[i]))
+#             list_cum_result.append(way)
+#         return sum(list_cum_result, 1)
+#     else:
+#         a = ji_num(n)[0]
+#         b = ji_num(n)[1]
+#         list_cum_result = []
+#         for i in range(1, len(a)):
+#             way = int(comb(a[i] + b[i] / 2, a[i]))
+#             list_cum_result.append(way)
+#         return sum(list_cum_result, 1)
+#
+# if __name__ == '__main__':
+#     a = input("Enter a number: ")
+#     print('小明的读书方式总数：', all_num(int(a)))
+
+
+# 输入十六进制，输出十进制
+# print(hex(16))
+
+# 给一个数组，将数组内的偶数放后面，奇数放前面
+# a_list = [5,8,7,6,1,2,9]
+# a_list = [1,28,5,6,7,30,9]
+# ji_list = []
+# ou_list = []
+# for i in a_list:
+#     if i % 2 == 0:
+#         ou_list.append(i)
+#     else:
+#         ji_list.append(i)
+# print(ji_list+ou_list)

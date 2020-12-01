@@ -162,6 +162,6 @@ def wx_headers():
     wx_header = {
         'Content-Type': 'application/json',
         'Xi-App-Id': '0a8020002101b2ddc7626fca179adf70',
-        'Xi-Session-Token': 'r:5a0f5337d64ab50dd3236e59b780b49e'
+        'Xi-Session-Token': 'r:573bd7724e1fadcc60711eb0fef6d7a7'
     }
     return wx_header

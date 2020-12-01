@@ -24,6 +24,16 @@ class XTOrder:
         cabinet = find_cabinet_res[0]['objectId']
         return cabinet
 
+    def find_locker(self, cab_no):
+        locker_list = []
+        find_locker_url = 'http://debug2.wegui.cn/v1/lockers?limit=360&skip=0&order=name&include=order.user,cabinet&where={"cabinet":{"__type":"Pointer","className":"Cabinet","objectId":"'+self.find_cabinet(cab_no)+'"},"status":{"$ne":"disabled"}}'
+        find_locker_res = self.rm.run_main('get', find_locker_url, header=dc.pc_headers('xiaodwx'))
+        for i in range(0, len(find_locker_res)):
+            locker = find_locker_res[i]['objectId']
+            locker_list.append(locker)
+            i += 1
+        return locker_list
+
     # 重置手机号 winnie = YEhBS9rJab
     def reset_phone(self, user_name_id):
         for i in self.find_user(user_name_id):
@@ -49,12 +59,17 @@ class XTOrder:
         set_cabinet_rule_data = {"birthdayEnable":birthdayEnable,"idCardEnable":idCardEnable,"forcePhoneEnable":forcePhoneEnable}
         self.rm.run_main('put', set_cabinet_rule_url, data=json.dumps(set_cabinet_rule_data), header=dc.pc_headers('xiaodwx'))
 
-
     # 下单
-    def xt_order(self, cab_no):
+    def xt_order(self, cab_no, locker_no, rentType="short", lockerType="s", passwordEnable=False, phone='', pwd=''):
+        locker = self.find_locker(cab_no)[locker_no-1]
         order_url = 'https://azapi.wegui.cn/v1/orders'
-        order_data = {"cabinetId":self.find_cabinet(cab_no),"rentType":"short","lockerType":"s","passwordEnable":False,"prepaid":1,"manualLockerEnable":True,"lockerId":"zxdG04YqEi"}
-        order_res = self.rm.run_main('post', order_url, data=json.dumps(order_data), header=dc.wx_headers())
+        if passwordEnable:
+            order_data = {"cabinetId": self.find_cabinet(cab_no), "rentType": rentType, "lockerType": lockerType,"passwordEnable": passwordEnable, "prepaid": 1, "manualLockerEnable": True, "lockerId": locker,"phone": phone, "password": pwd}
+            order_res = self.rm.run_main('post', order_url, data=json.dumps(order_data), header=dc.wx_headers())
+        else:
+            order_data = {"cabinetId": self.find_cabinet(cab_no), "rentType": rentType, "lockerType": lockerType,
+                          "passwordEnable": passwordEnable, "prepaid": 1, "manualLockerEnable": True,"lockerId": locker}
+            order_res = self.rm.run_main('post', order_url, data=json.dumps(order_data), header=dc.wx_headers())
         return order_res['objectId']
 
     # 获取取件码
@@ -62,6 +77,12 @@ class XTOrder:
         get_code_url = 'http://debug2.wegui.cn/v1/orderRecords?skip=0&limit=100&where={"order":{"__type":"Pointer","className":"Order","objectId":"' + order_id + '"}}&include=user'
         get_code_res = self.rm.run_main('get', get_code_url, header=dc.pc_headers('xiaodwx'))
         return get_code_res[0]['data']['password']
+
+    # 管理后台关闭订单
+    def close_order(self, order_id):
+        close_order_url = 'http://debug2.wegui.cn/v1/orders/' + order_id + '/close'
+        close_order_data = {"payed":0,"isFee":False}
+        self.rm.run_main('post', close_order_url, data=json.dumps(close_order_data), header=dc.pc_headers('xiaodwx'))
 
 
 if __name__ == '__main__':
