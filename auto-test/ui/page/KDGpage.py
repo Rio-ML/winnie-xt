@@ -32,11 +32,19 @@ class PadPage(object):
             "终端投件": "com.motern.cherry.monitor:id/btn_rent",
             "快速投件": "com.motern.cherry.monitor:id/btn_fast_push",
             "键盘确认": "com.motern.cherry.monitor:id/btn_code_confirm",
+            "单号-键盘确定": "com.motern.cherry.monitor:id/ok",
             "微小柜": "com.motern.cherry.monitor:id/btn_xsmall",
             "小柜": "com.motern.cherry.monitor:id/btn_small",
             "中柜": "com.motern.cherry.monitor:id/btn_mid",
             "大柜": "com.motern.cherry.monitor:id/btn_big",
-            "存件异常": "com.motern.cherry.monitor:id/error",
+            "投件异常": "com.motern.cherry.monitor:id/error",
+            "大小不合适": "com.motern.cherry.monitor:id/btn_change_locker",
+            "门未开": "com.motern.cherry.monitor:id/btn_change_locker2",
+            "再开一次": "com.motern.cherry.monitor:id/btn_re_open",
+            "未投件": "com.motern.cherry.monitor:id/btn_cancel_order",
+            "拿出快递": "com.motern.cherry.monitor:id/btn_cancel_order2",
+            "投件异常-确定": "com.motern.cherry.monitor:id/btn_ok",
+            "投件异常-取消": "com.motern.cherry.monitor:id/btn_cancel",
             "返回": "com.motern.cherry.monitor:id/btn_return"
         }
         assert a_button in class_map

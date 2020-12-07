@@ -338,3 +338,10 @@ class SessionToken(object):
                    "Xi-App-Id": "ce5cec2cfd1440759db6fa992b0641b7",
                    "Xi-Session-Token": SessionToken.KDG_login_session_token(self, 'dxsauto', 'abc123')}
         return headers
+
+    # 数据库ssesion: user为IJzA07whkQ的sessiontoken
+    def KDG_wx_headers(self):
+        headers = {"Content-Type": "application/json",
+                   "Xi-App-Id": "ce5cec2cfd1440759db6fa992b0641b7",
+                   "Xi-Session-Token": 'r:1addc15e4311a71a8b461a74c204a331'}
+        return headers

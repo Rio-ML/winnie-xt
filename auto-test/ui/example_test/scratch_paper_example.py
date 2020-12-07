@@ -372,3 +372,6 @@ from pytesseract.pytesseract import image_to_string
 #     else:
 #         ji_list.append(i)
 # print(ji_list+ou_list)
+a = 'abcd'
+print(int(a))
+
